@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#460F24">
+  <meta name="description" content="Eben Arquitectura y Construcción S.A.S. — Diseño, construcción, remodelación, adecuación y mantenimiento en Colombia.">
+  <title>Eben Arquitectura y Construcción S.A.S.</title>
+
+  <link rel="icon" href="img/logos/transparente/simbolo_color.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="hero__header">
+    <img
+      class="hero__logo"
+      src="img/logos/transparente/principal_blanco.png"
+      alt="Eben Arquitectura y Construcción S.A.S."
+      width="1080"
+      height="1080">
+  </header>
+
+  <main>
+    <section class="hero" data-interval="7000" aria-label="Servicios Eben">
+      <div class="hero__slides">
+
+        <article class="hero__slide is-active" aria-hidden="false">
+          <video class="hero__video" src="assets/residencial.mp4" autoplay muted loop playsinline preload="auto"></video>
+          <div class="hero__overlay"></div>
+          <div class="hero__content">
+            <h1 class="hero__title">Residencial</h1>
+            <p class="hero__subtitle">Transformamos viviendas y entregamos espacios completamente terminados</p>
+          </div>
+        </article>
+
+        <article class="hero__slide" aria-hidden="true">
+          <video class="hero__video" src="assets/empresarial.mp4" muted loop playsinline preload="metadata"></video>
+          <div class="hero__overlay"></div>
+          <div class="hero__content">
+            <h1 class="hero__title">Empresarial</h1>
+            <p class="hero__subtitle">Adecuación, mantenimiento o transformación de sus espacios con un solo proveedor</p>
+          </div>
+        </article>
+
+        <article class="hero__slide" aria-hidden="true">
+          <video class="hero__video" src="assets/comercial.mp4" muted loop playsinline preload="metadata"></video>
+          <div class="hero__overlay"></div>
+          <div class="hero__content">
+            <h1 class="hero__title">Comercial</h1>
+            <p class="hero__subtitle">Diseñamos, construimos y adecuamos espacios destinados a actividades comerciales</p>
+          </div>
+        </article>
+
+      </div>
+
+      <button class="hero__arrow hero__arrow--prev" type="button" aria-label="Servicio anterior">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M15 5l-7 7 7 7"/>
+        </svg>
+      </button>
+      <button class="hero__arrow hero__arrow--next" type="button" aria-label="Servicio siguiente">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
+
+      <nav class="hero__indicators" aria-label="Seleccionar servicio">
+        <button class="hero__indicator is-active" type="button" data-slide="0" aria-label="Ir a Residencial" aria-current="true">
+          <span class="hero__indicator-num">01</span>
+          <span class="hero__indicator-line"><span class="hero__indicator-progress"></span></span>
+        </button>
+        <button class="hero__indicator" type="button" data-slide="1" aria-label="Ir a Empresarial" aria-current="false">
+          <span class="hero__indicator-num">02</span>
+          <span class="hero__indicator-line"><span class="hero__indicator-progress"></span></span>
+        </button>
+        <button class="hero__indicator" type="button" data-slide="2" aria-label="Ir a Comercial" aria-current="false">
+          <span class="hero__indicator-num">03</span>
+          <span class="hero__indicator-line"><span class="hero__indicator-progress"></span></span>
+        </button>
+      </nav>
+    </section>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

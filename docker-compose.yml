@@ -1,0 +1,10 @@
+
+services:
+  web:
+    image: nginx:latest
+    container_name: nginx_arquitectura
+    ports:
+      - "80:80"
+    volumes:
+      - ./app:/usr/share/nginx/html
+    restart: unless-stopped
