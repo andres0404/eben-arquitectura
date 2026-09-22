@@ -62,7 +62,7 @@ button {
 }
 
 .hero__logo {
-  height: clamp(84px, 12vh, 128px);
+  height: clamp(70px, 5vh, 128px);
   width: auto;
 }
 
