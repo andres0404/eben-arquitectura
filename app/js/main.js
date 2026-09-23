@@ -7,7 +7,7 @@ class HeroCarousel {
     this.prevBtn = root.querySelector(".hero__arrow--prev");
     this.nextBtn = root.querySelector(".hero__arrow--next");
     this.indicatorsNav = root.querySelector(".hero__indicators");
-    this.interval = Number(root.dataset.interval) || 7000;
+    this.interval = Number(root.dataset.interval) || 9000;
     this.index = 0;
     this.timer = null;
     this.paused = false;
@@ -121,7 +121,45 @@ class HeroCarousel {
   }
 }
 
+class ServicesScroll {
+  constructor(section) {
+    this.services = Array.from(section.querySelectorAll(".service"));
+    this.panels = this.services.map((service) => service.querySelector(".service__panel"));
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      this.panels.forEach((panel) => panel.style.setProperty("--iris", 1));
+      return;
+    }
+
+    this.ticking = false;
+    window.addEventListener("scroll", () => this.requestTick(), { passive: true });
+    window.addEventListener("resize", () => this.requestTick(), { passive: true });
+    this.update();
+  }
+
+  requestTick() {
+    if (this.ticking) return;
+    this.ticking = true;
+    requestAnimationFrame(() => {
+      this.update();
+      this.ticking = false;
+    });
+  }
+
+  update() {
+    const half = window.innerHeight / 2;
+    this.services.forEach((service, i) => {
+      const top = service.getBoundingClientRect().top;
+      const iris = Math.min(1, Math.max(0, (half - top) / half));
+      this.panels[i].style.setProperty("--iris", iris.toFixed(4));
+    });
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const hero = document.querySelector(".hero");
   if (hero) new HeroCarousel(hero);
+
+  const services = document.querySelector(".services");
+  if (services) new ServicesScroll(services);
 });

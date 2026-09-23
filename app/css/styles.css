@@ -17,18 +17,18 @@
   border-radius: 0;
 }
 
-html,
-body {
+html {
   height: 100%;
 }
 
 body {
+  min-height: 100%;
   background: var(--color-negro);
   color: var(--color-blanco);
   font-family: var(--font-principal);
   font-weight: 400;
   line-height: 1.5;
-  overflow: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -269,6 +269,166 @@ button {
   }
 }
 
+/* ---------- Servicios ---------- */
+
+.services {
+  position: relative;
+  background: var(--color-blanco);
+  color: var(--color-burdeos);
+}
+
+.services__intro {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(64px, 12vh, 120px) clamp(24px, 6vw, 80px);
+}
+
+.services__title {
+  font-size: clamp(2.4rem, 7.5vw, 5.75rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: 0.18em;
+  text-indent: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-burdeos);
+}
+
+.services__subtitle {
+  margin-top: clamp(16px, 3vh, 28px);
+  max-width: 640px;
+  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: rgba(70, 15, 36, 0.75);
+}
+
+.service {
+  position: relative;
+  height: 120vh;
+}
+
+.service__panel {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--color-burdeos);
+}
+
+.service__media {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  clip-path: inset(calc(50% - var(--iris, 0) * 50%));
+}
+
+.service__img {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+}
+
+.service__img--residencial {
+  background-image:
+    url("../img/residencial-familia.jpg"),
+    linear-gradient(135deg, #CFE4E9 0%, #8FB3BC 100%);
+}
+
+.service__img--empresarial {
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0 79px, rgba(255, 255, 255, 0.07) 79px 80px),
+    repeating-linear-gradient(90deg, transparent 0 79px, rgba(255, 255, 255, 0.07) 79px 80px),
+    linear-gradient(135deg, #460F24 0%, #6B1A35 100%);
+}
+
+.service__img--comercial {
+  background-image:
+    url("../img/comercial.jpg"),
+    linear-gradient(135deg, #2A3B40 0%, #460F24 100%);
+}
+
+.service__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0.3) 50%,
+      rgba(0, 0, 0, 0.65) 100%
+    ),
+    rgba(70, 15, 36, 0.18);
+}
+
+.service__detail {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(56px, 12vh, 112px);
+  z-index: 2;
+  width: min(640px, calc(100% - clamp(48px, 12vw, 160px)));
+  transform: translateX(-50%);
+  text-align: center;
+  opacity: calc(var(--iris, 0) * 1.5);
+}
+
+.service__detail p {
+  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: var(--color-blanco);
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.45);
+}
+
+.service__tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: clamp(16px, 3vh, 24px);
+  list-style: none;
+}
+
+.service__tags li {
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: rgba(0, 0, 0, 0.2);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-hielo);
+}
+
+.service__head {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(72px, 12vh, 120px) clamp(24px, 6vw, 80px) clamp(160px, 30vh, 260px);
+  pointer-events: none;
+}
+
+.service__name {
+  font-size: clamp(2.4rem, 7.5vw, 5.75rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: 0.18em;
+  text-indent: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-blanco);
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.4);
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 640px) {
@@ -285,6 +445,27 @@ button {
     top: auto;
     bottom: clamp(88px, 14vh, 120px);
     transform: none;
+  }
+
+  .service {
+    height: 220vh;
+  }
+
+  .service__head {
+    padding-bottom: clamp(150px, 32vh, 220px);
+  }
+
+  .service__detail {
+    bottom: clamp(40px, 8vh, 72px);
+  }
+
+  .service__tags {
+    gap: 8px;
+  }
+
+  .service__tags li {
+    padding: 6px 10px;
+    font-size: 0.7rem;
   }
 }
 
@@ -303,5 +484,13 @@ button {
   .hero__indicator.is-active .hero__indicator-progress {
     animation: none;
     transform: scaleX(1);
+  }
+
+  .service__media {
+    clip-path: inset(0);
+  }
+
+  .service__detail {
+    opacity: 1;
   }
 }
