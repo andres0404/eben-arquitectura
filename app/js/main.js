@@ -156,10 +156,34 @@ class ServicesScroll {
   }
 }
 
+const RENDER_POOLS = {
+  r: [1, 2, 3, 5, 6, 7],
+  c: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+  e: [1, 2, 3, 4, 5, 6, 7, 8]
+};
+
+function assignRenders() {
+  document.querySelectorAll(".service__img[data-pool]").forEach((box) => {
+    const pool = RENDER_POOLS[box.dataset.pool];
+    if (!pool) return;
+    const shuffled = pool.slice();
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    box.querySelectorAll(".service__col").forEach((img, i) => {
+      const id = shuffled[i % shuffled.length];
+      img.src = "img/renders/optimized/" + box.dataset.pool + id + ".jpg";
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const hero = document.querySelector(".hero");
   if (hero) new HeroCarousel(hero);
 
   const services = document.querySelector(".services");
   if (services) new ServicesScroll(services);
+
+  assignRenders();
 });
