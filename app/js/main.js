@@ -156,6 +156,194 @@ class ServicesScroll {
   }
 }
 
+class CompareSlider {
+  constructor(root) {
+    this.root = root;
+    this.handle = root.querySelector(".compare__handle");
+    this.pos = 50;
+    this.dragging = false;
+
+    root.addEventListener("pointerdown", (event) => {
+      this.dragging = true;
+      root.setPointerCapture(event.pointerId);
+      this.moveTo(event.clientX);
+    });
+
+    root.addEventListener("pointermove", (event) => {
+      if (this.dragging) this.moveTo(event.clientX);
+    });
+
+    ["pointerup", "pointercancel"].forEach((type) => {
+      root.addEventListener(type, () => {
+        this.dragging = false;
+      });
+    });
+
+    this.handle.addEventListener("keydown", (event) => {
+      const step = event.shiftKey ? 10 : 3;
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        event.stopPropagation();
+        this.setPos(this.pos - step);
+      } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        event.stopPropagation();
+        this.setPos(this.pos + step);
+      } else if (event.key === "Home") {
+        this.setPos(0);
+      } else if (event.key === "End") {
+        this.setPos(100);
+      }
+    });
+
+    this.setPos(50);
+  }
+
+  moveTo(clientX) {
+    const rect = this.root.getBoundingClientRect();
+    this.setPos(((clientX - rect.left) / rect.width) * 100);
+  }
+
+  setPos(value) {
+    this.pos = Math.min(100, Math.max(0, value));
+    this.root.style.setProperty("--pos", this.pos + "%");
+    this.handle.setAttribute("aria-valuenow", String(Math.round(this.pos)));
+  }
+}
+
+class PhotoCarousel {
+  constructor(root) {
+    this.root = root;
+    this.slides = Array.from(root.querySelectorAll(".photos__img"));
+    this.counter = root.querySelector(".photos__counter");
+    this.total = this.slides.length;
+    this.index = 0;
+
+    root.querySelector(".photos__arrow--prev").addEventListener("click", () => this.go(this.index - 1));
+    root.querySelector(".photos__arrow--next").addEventListener("click", () => this.go(this.index + 1));
+
+    root.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        event.stopPropagation();
+        this.go(this.index - 1);
+      } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        event.stopPropagation();
+        this.go(this.index + 1);
+      }
+    });
+
+    let startX = null;
+    let startY = null;
+
+    root.addEventListener("pointerdown", (event) => {
+      if (event.pointerType === "mouse") return;
+      startX = event.clientX;
+      startY = event.clientY;
+    });
+
+    root.addEventListener("pointerup", (event) => {
+      if (startX === null) return;
+      const dx = event.clientX - startX;
+      const dy = event.clientY - startY;
+      startX = null;
+      startY = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        this.go(this.index + (dx < 0 ? 1 : -1));
+      }
+    });
+
+    root.addEventListener("pointercancel", () => {
+      startX = null;
+      startY = null;
+    });
+
+    this.go(0);
+  }
+
+  load(i) {
+    const img = this.slides[i];
+    if (img && !img.hasAttribute("src")) img.src = img.dataset.src;
+  }
+
+  go(i) {
+    this.index = ((i % this.total) + this.total) % this.total;
+    this.slides.forEach((img, n) => img.classList.toggle("is-active", n === this.index));
+    this.load(this.index);
+    this.load((this.index + 1) % this.total);
+    this.counter.textContent =
+      String(this.index + 1).padStart(2, "0") + " / " + String(this.total).padStart(2, "0");
+  }
+}
+
+class FaqAccordion {
+  constructor(root) {
+    this.root = root;
+    this.items = Array.from(root.querySelectorAll(".faq__item"));
+
+    this.items.forEach((item) => {
+      item.querySelector(".faq__q").addEventListener("click", () => this.toggle(item));
+    });
+
+    window.addEventListener("resize", () => {
+      const open = root.querySelector(".faq__item.is-open .faq__a");
+      if (open) open.style.maxHeight = open.scrollHeight + "px";
+    });
+  }
+
+  toggle(item) {
+    const wasOpen = item.classList.contains("is-open");
+    this.items.forEach((other) => this.close(other));
+    if (!wasOpen) this.open(item);
+  }
+
+  open(item) {
+    item.classList.add("is-open");
+    item.querySelector(".faq__q").setAttribute("aria-expanded", "true");
+    const panel = item.querySelector(".faq__a");
+    panel.style.maxHeight = panel.scrollHeight + "px";
+  }
+
+  close(item) {
+    item.classList.remove("is-open");
+    item.querySelector(".faq__q").setAttribute("aria-expanded", "false");
+    item.querySelector(".faq__a").style.maxHeight = "";
+  }
+}
+
+class SiteNavigation {
+  constructor(root) {
+    this.root = root;
+    this.toggle = root.querySelector(".site-nav__toggle");
+    this.links = Array.from(root.querySelectorAll(".site-nav a"));
+    this.hero = document.querySelector(".hero");
+
+    this.toggle.addEventListener("click", () => this.toggleMenu());
+    this.links.forEach((link) => link.addEventListener("click", () => this.closeMenu()));
+    window.addEventListener("scroll", () => this.updateState(), { passive: true });
+    window.addEventListener("resize", () => this.updateState());
+    this.updateState();
+  }
+
+  updateState() {
+    const threshold = this.hero ? this.hero.offsetHeight - this.root.offsetHeight : 80;
+    this.root.classList.toggle("is-scrolled", window.scrollY > threshold);
+  }
+
+  toggleMenu() {
+    const isOpen = this.root.classList.toggle("menu-open");
+    this.toggle.setAttribute("aria-expanded", String(isOpen));
+    this.toggle.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
+  }
+
+  closeMenu() {
+    this.root.classList.remove("menu-open");
+    this.toggle.setAttribute("aria-expanded", "false");
+    this.toggle.setAttribute("aria-label", "Abrir menú");
+  }
+}
+
 const RENDER_POOLS = {
   r: [1, 2, 3, 5, 6, 7],
   c: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
@@ -179,11 +367,23 @@ function assignRenders() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  const navigation = document.querySelector(".site-header");
+  if (navigation) new SiteNavigation(navigation);
+
   const hero = document.querySelector(".hero");
   if (hero) new HeroCarousel(hero);
 
   const services = document.querySelector(".services");
   if (services) new ServicesScroll(services);
+
+  const compare = document.querySelector("[data-compare]");
+  if (compare) new CompareSlider(compare);
+
+  const photos = document.querySelector("[data-photos]");
+  if (photos) new PhotoCarousel(photos);
+
+  const faq = document.querySelector(".faq");
+  if (faq) new FaqAccordion(faq);
 
   assignRenders();
 });

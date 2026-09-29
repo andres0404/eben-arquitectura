@@ -15,17 +15,28 @@
 </head>
 <body>
 
-  <header class="hero__header">
+  <header class="site-header">
     <img
       class="hero__logo"
       src="img/logos/transparente/vertical_blanco.png"
       alt="Eben Arquitectura y Construcción S.A.S."
       width="1080"
       height="1080">
+    <nav class="site-nav" id="site-nav-menu" aria-label="Navegación principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#preguntas">Preguntas frecuentes</a>
+    </nav>
+    <button class="site-nav__toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-nav-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </header>
 
   <main>
-    <section class="hero" data-interval="8000" aria-label="Servicios Eben">
+    <section class="hero" id="inicio" data-interval="8000" aria-label="Servicios Eben">
       <div class="hero__slides">
 
         <article class="hero__slide is-active" aria-hidden="false">
@@ -100,12 +111,19 @@
             </div>
             <div class="service__overlay"></div>
             <div class="service__detail">
-              <p>(Transformamos casas y apartamentos en hogares terminados: obra, remodelación, interiores y acabados, ejecutados con un solo equipo de principio a fin.)</p>
-              <ul class="service__tags">
-                <li>Obra nueva</li>
-                <li>Remodelación</li>
-                <li>Interiores</li>
-                <li>Acabados</li>
+              <p class="service__lead">Nos enfocamos en transformar viviendas y entregar espacios completamente terminados:</p>
+              <ul class="service__list">
+                <li>Remodelaciones integrales.</li>
+                <li>Adecuación de apartamentos y casas desde obra gris hasta acabado final.</li>
+                <li>Diseño y ejecución de cocinas integrales.</li>
+                <li>Remodelación de baños.</li>
+                <li>Instalación de porcelanato, enchapes y pisos.</li>
+                <li>Cielos rasos y sistemas drywall.</li>
+                <li>Pintura, estuco y acabados arquitectónicos.</li>
+                <li>Carpintería arquitectónica y mobiliario a medida.</li>
+                <li>Adecuaciones eléctricas, hidráulicas y sanitarias.</li>
+                <li>Impermeabilizaciones.</li>
+                <li>Diseño y distribución de espacios.</li>
               </ul>
             </div>
           </div>
@@ -125,12 +143,17 @@
             </div>
             <div class="service__overlay"></div>
             <div class="service__detail">
-              <p>(Adecuamos, mantenemos y transformamos oficinas y sedes corporativas sin interrumpir su operación, con un solo proveedor responsable de todo el proceso.)</p>
-              <ul class="service__tags">
-                <li>Adecuación</li>
-                <li>Mantenimiento</li>
-                <li>Oficinas</li>
-                <li>Corporativo</li>
+              <p class="service__lead">Soluciones para empresas que necesitan adecuar, mantener o transformar sus instalaciones sin tener que contratar múltiples proveedores:</p>
+              <ul class="service__list">
+                <li>Adecuaciones locativas de oficinas y bodegas.</li>
+                <li>Mantenimiento locativo preventivo y correctivo.</li>
+                <li>Remodelación de espacios corporativos.</li>
+                <li>Pintura, resanes y acabados.</li>
+                <li>Drywall y cielos rasos.</li>
+                <li>Pisos y enchapes.</li>
+                <li>Plomería y reparaciones hidráulicas.</li>
+                <li>Adecuación y mantenimiento de fachadas.</li>
+                <li>Reparaciones generales de infraestructura.</li>
               </ul>
             </div>
           </div>
@@ -150,12 +173,18 @@
             </div>
             <div class="service__overlay"></div>
             <div class="service__detail">
-              <p>(Diseñamos y construimos locales, showcases y espacios retail listos para operar, con acabados que reflejan la identidad de su marca.)</p>
-              <ul class="service__tags">
-                <li>Locales</li>
-                <li>Retail</li>
-                <li>Construcción</li>
-                <li>Adecuación</li>
+              <p class="service__lead">Diseñamos, construimos y adecuamos espacios destinados a actividades comerciales:</p>
+              <ul class="service__list">
+                <li>Adecuación y remodelación de locales.</li>
+                <li>Diseño y distribución de espacios comerciales.</li>
+                <li>Acabados arquitectónicos.</li>
+                <li>Fachadas.</li>
+                <li>Puertas y persianas comerciales.</li>
+                <li>Cielos rasos y drywall.</li>
+                <li>Pisos y enchapes.</li>
+                <li>Iluminación y adecuaciones eléctricas.</li>
+                <li>Carpintería y mobiliario.</li>
+                <li>Señalización y elementos de imagen del establecimiento.</li>
               </ul>
             </div>
           </div>
@@ -164,6 +193,128 @@
           </div>
         </div>
       </article>
+    </section>
+
+    <section class="works" id="trabajos" aria-labelledby="works-title">
+      <div class="works__intro">
+        <h2 class="works__title" id="works-title">Trabajos</h2>
+      </div>
+
+      <div class="works__grid">
+        <div class="compare" data-compare>
+          <img class="compare__img" src="img/renders/e-t1.jpg" alt="Trabajo empresarial — vista derecha" loading="lazy">
+          <div class="compare__clip">
+            <img class="compare__img" src="img/renders/e-t2.jpg" alt="Trabajo empresarial — vista izquierda" loading="lazy">
+          </div>
+          <div class="compare__divider"></div>
+          <button
+            class="compare__handle"
+            type="button"
+            role="slider"
+            aria-label="Comparar imágenes"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="50"
+            aria-orientation="horizontal">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M11 6l-5 6 5 6"/>
+              <path d="M13 6l5 6-5 6"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="works__side">
+          <div class="works__text">
+            <p>Amplia experiencia en ejecución de remodelaciones, adecuaciones y mantenimiento locativo. Con Eben garantizamos que su proyecto se defina con diseños modernos, se lleve a cabo en los plazos acordados con mano de obra responsable y cuidadosa para que cada peso que paga se traduzca en valorización para su inmueble</p>
+          </div>
+
+          <div class="photos" data-photos aria-label="Galería de trabajos">
+            <img class="photos__img is-active" src="img/trabajos/1.jpeg" alt="Trabajo de Eben — foto 1 de 18" loading="lazy" decoding="async">
+            <img class="photos__img" data-src="img/trabajos/2.jpeg" alt="Trabajo de Eben — foto 2 de 18" loading="lazy" decoding="async">
+            <img class="photos__img" data-src="img/trabajos/3.jpeg" alt="Trabajo de Eben — foto 3 de 18" loading="lazy" decoding="async">
+            <img class="photos__img" data-src="img/trabajos/4.jpeg" alt="Trabajo de Eben — foto 4 de 18" loading="lazy" decoding="async">
+            <img class="photos__img" data-src="img/trabajos/5.jpeg" alt="Trabajo de Eben — foto 5 de 18" loading="lazy" decoding="async">
+            <img class="photos__img" data-src="img/trabajos/6.jpeg" alt="Trabajo de Eben — foto 6 de 18" loading="lazy" decoding="async">
+            <img class="photos__img" data-src="img/trabajos/7.jpeg" alt="Trabajo de Eben — foto 7 de 18" loading="lazy" decoding="async">
+            <img class="photos__img" data-src="img/trabajos/8.jpeg" alt="Trabajo de Eben — foto 8 de 18" loading="lazy" decoding="async">
+            <img class="photos__img" data-src="img/trabajos/9.jpeg" alt="Trabajo de Eben — foto 9 de 18" loading="lazy" decoding="async">
+            <img class="photos__img" data-src="img/trabajos/10.jpeg" alt="Trabajo de Eben — foto 10 de 18" loading="lazy" decoding="async">
+            <img class="photos__img" data-src="img/trabajos/11.jpeg" alt="Trabajo de Eben — foto 11 de 18" loading="lazy" decoding="async">
+            <img class="photos__img" data-src="img/trabajos/12.jpeg" alt="Trabajo de Eben — foto 12 de 18" loading="lazy" decoding="async">
+            <img class="photos__img" data-src="img/trabajos/13.jpeg" alt="Trabajo de Eben — foto 13 de 18" loading="lazy" decoding="async">
+            <img class="photos__img" data-src="img/trabajos/14.jpeg" alt="Trabajo de Eben — foto 14 de 18" loading="lazy" decoding="async">
+            <img class="photos__img" data-src="img/trabajos/15.jpeg" alt="Trabajo de Eben — foto 15 de 18" loading="lazy" decoding="async">
+            <img class="photos__img" data-src="img/trabajos/16.jpeg" alt="Trabajo de Eben — foto 16 de 18" loading="lazy" decoding="async">
+            <img class="photos__img" data-src="img/trabajos/17.jpeg" alt="Trabajo de Eben — foto 17 de 18" loading="lazy" decoding="async">
+            <img class="photos__img" data-src="img/trabajos/18.jpeg" alt="Trabajo de Eben — foto 18 de 18" loading="lazy" decoding="async">
+
+            <span class="photos__counter" aria-live="polite">01 / 18</span>
+
+            <button class="photos__arrow photos__arrow--prev" type="button" aria-label="Foto anterior">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M15 6l-6 6 6 6"/>
+              </svg>
+            </button>
+            <button class="photos__arrow photos__arrow--next" type="button" aria-label="Foto siguiente">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M9 6l6 6-6 6"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="band" aria-hidden="true">
+      <img class="band__img" src="img/renders/optimized/r7.jpg" alt="" loading="lazy" decoding="async">
+    </div>
+
+    <section class="faq" id="preguntas" aria-labelledby="faq-title">
+      <div class="faq__intro">
+        <h2 class="faq__title" id="faq-title">Preguntas frecuentes</h2>
+      </div>
+
+      <div class="faq__list">
+        <div class="faq__item">
+          <button class="faq__q" type="button" id="faq-q1" aria-expanded="false" aria-controls="faq-a1">
+            <span>¿Cuánto cuesta diseñar y construir con Eben?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a" id="faq-a1" role="region" aria-labelledby="faq-q1">
+            <p>Cada proyecto se cotiza según área, complejidad técnica, materiales y ubicación. Después de la primera conversación entregamos un rango estimado y, tras el anteproyecto, un presupuesto cerrado antes de iniciar obra</p>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__q" type="button" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">
+            <span>¿Trabajan fuera de Bogotá?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a" id="faq-a2" role="region" aria-labelledby="faq-q2">
+            <p>Sí. Operamos en toda Colombia. Trabajamos remotamente desde la conversación inicial hasta el diseño definitivo, y desplazamos equipo a la obra durante toda la fase de construcción.</p>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__q" type="button" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">
+            <span>¿Cuánto se demora un proyecto desde el primer contacto?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3">
+            <p>Una remodelación tipo se diseña en 4–6 semanas y se construye en 2–4 meses. Un proyecto residencial nuevo toma entre 3 y 5 meses de diseño y 8 a 14 meses de obra. Una adecuación corporativa de 800–1.000 m² se entrega en 12–16 semanas.</p>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__q" type="button" id="faq-q4" aria-expanded="false" aria-controls="faq-a4">
+            <span>¿Ofrecen garantía sobre los proyectos?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a" id="faq-a4" role="region" aria-labelledby="faq-q4">
+            <p>Sí. Toda obra tiene garantía de un año sobre acabados e instalaciones, y diez años sobre estructura, conforme a la normativa vigente. Acompañamos los primeros meses de uso del espacio.</p>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
