@@ -344,6 +344,76 @@ class SiteNavigation {
   }
 }
 
+class XrayHover {
+  constructor(root) {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    this.root = root;
+    this.layer = root.querySelector(".cta__layer");
+    this.pointer = { x: -300, y: -300 };
+    this.current = { x: -300, y: -300, radius: 0 };
+    this.target = { x: -300, y: -300, radius: 0 };
+    this.frameId = null;
+
+    root.addEventListener("pointerenter", (event) => {
+      this.updatePointer(event);
+      this.target.radius = this.getRadius();
+      this.requestFrame();
+    });
+
+    root.addEventListener("pointermove", (event) => {
+      this.updatePointer(event);
+      this.requestFrame();
+    });
+
+    root.addEventListener("pointerleave", () => {
+      this.target.x = -300;
+      this.target.y = -300;
+      this.target.radius = 0;
+      this.requestFrame();
+    });
+
+    window.addEventListener("resize", () => {
+      if (this.target.radius > 0) this.target.radius = this.getRadius();
+    });
+  }
+
+  updatePointer(event) {
+    const rect = this.root.getBoundingClientRect();
+    this.target.x = event.clientX - rect.left;
+    this.target.y = event.clientY - rect.top;
+  }
+
+  getRadius() {
+    const rect = this.root.getBoundingClientRect();
+    return Math.min(240, Math.max(280, Math.min(rect.width, rect.height) * 0.38));
+  }
+
+  requestFrame() {
+    if (this.frameId === null) this.frameId = requestAnimationFrame(() => this.animate());
+  }
+
+  animate() {
+    this.frameId = null;
+    this.current.x = this.lerp(this.current.x, this.target.x, 0.18);
+    this.current.y = this.lerp(this.current.y, this.target.y, 0.18);
+    this.current.radius = this.lerp(this.current.radius, this.target.radius, 0.18);
+    this.layer.style.setProperty("--xray-x", this.current.x + "px");
+    this.layer.style.setProperty("--xray-y", this.current.y + "px");
+    this.layer.style.setProperty("--xray-radius", this.current.radius + "px");
+
+    const moving = Math.abs(this.current.x - this.target.x) > 0.5 ||
+      Math.abs(this.current.y - this.target.y) > 0.5 ||
+      Math.abs(this.current.radius - this.target.radius) > 0.5;
+    if (moving) this.requestFrame();
+  }
+
+  lerp(current, target, amount) {
+    return current + (target - current) * amount;
+  }
+}
+
 const RENDER_POOLS = {
   r: [1, 2, 3, 5, 6, 7],
   c: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
@@ -384,6 +454,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const faq = document.querySelector(".faq");
   if (faq) new FaqAccordion(faq);
+
+  const xray = document.querySelector("[data-xray]");
+  if (xray) new XrayHover(xray);
 
   assignRenders();
 });
