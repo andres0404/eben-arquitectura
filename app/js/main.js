@@ -346,7 +346,6 @@ class SiteNavigation {
 
 class XrayHover {
   constructor(root) {
-    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     this.root = root;
@@ -357,26 +356,51 @@ class XrayHover {
     this.frameId = null;
 
     root.addEventListener("pointerenter", (event) => {
+      if (event.pointerType !== "mouse") return;
       this.updatePointer(event);
       this.target.radius = this.getRadius();
       this.requestFrame();
     });
 
     root.addEventListener("pointermove", (event) => {
+      if (event.pointerType !== "mouse") return;
       this.updatePointer(event);
       this.requestFrame();
     });
 
-    root.addEventListener("pointerleave", () => {
-      this.target.x = -300;
-      this.target.y = -300;
-      this.target.radius = 0;
-      this.requestFrame();
+    root.addEventListener("pointerleave", (event) => {
+      if (event.pointerType !== "mouse") return;
+      this.hide();
     });
+
+    root.addEventListener("touchstart", (event) => {
+      const touch = event.touches[0];
+      if (!touch) return;
+      this.updateTouch(touch);
+      this.target.radius = this.getRadius();
+      this.requestFrame();
+    }, { passive: true });
+
+    root.addEventListener("touchmove", (event) => {
+      const touch = event.touches[0];
+      if (!touch) return;
+      this.updateTouch(touch);
+      this.requestFrame();
+    }, { passive: true });
+
+    root.addEventListener("touchend", () => this.hide(), { passive: true });
+    root.addEventListener("touchcancel", () => this.hide(), { passive: true });
 
     window.addEventListener("resize", () => {
       if (this.target.radius > 0) this.target.radius = this.getRadius();
     });
+  }
+
+  hide() {
+    this.target.x = -300;
+    this.target.y = -300;
+    this.target.radius = 0;
+    this.requestFrame();
   }
 
   updatePointer(event) {
@@ -385,9 +409,15 @@ class XrayHover {
     this.target.y = event.clientY - rect.top;
   }
 
+  updateTouch(touch) {
+    const rect = this.root.getBoundingClientRect();
+    this.target.x = touch.clientX - rect.left;
+    this.target.y = touch.clientY - rect.top;
+  }
+
   getRadius() {
     const rect = this.root.getBoundingClientRect();
-    return Math.min(240, Math.max(280, Math.min(rect.width, rect.height) * 0.38));
+    return Math.min(240, Math.max(160, Math.min(rect.width, rect.height) * 0.38));
   }
 
   requestFrame() {
