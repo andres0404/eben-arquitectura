@@ -294,7 +294,8 @@ button {
   left: 50%;
   z-index: 15;
   display: flex;
-  gap: clamp(20px, 4vw, 40px);
+  column-gap: clamp(20px, 3vw, 32px);
+  row-gap: clamp(8px, 1.5vw, 16px);
   transform: translateX(-50%);
 }
 
@@ -417,10 +418,10 @@ button {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  gap: clamp(20px, 4vw, 40px);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: clamp(10px, 1vw, 20px);
   align-items: stretch;
-  padding: clamp(18px, 2.4vw, 28px);
+  padding: clamp(14px, 1.8vw, 20px);
   overflow: hidden;
   border: 1px solid rgba(70, 15, 36, 0.08);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(252, 253, 253, 0.9));
@@ -434,16 +435,18 @@ button {
 
 .service__media {
   position: relative;
-  min-height: 420px;
+  grid-column: 1;
+  grid-row: 4;
+  min-height: 0;
   overflow: hidden;
   background: var(--color-hielo);
 }
 
 .service__carousel {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  inset: auto;
   z-index: 3;
-  height: 100%;
+  height: clamp(300px, 40vh, 440px);
   background: url("../assets/diseño.png") center / cover;
 }
 
@@ -475,13 +478,13 @@ button {
 .service__detail {
   position: relative;
   z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: clamp(8px, 1vw, 12px) clamp(8px, 0.5vw, 10px);
+  display: contents;
 }
 
 .service__eyebrow {
+  grid-column: 1;
+  grid-row: 1;
+  padding-inline: clamp(8px, 1vw, 10px);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.2em;
@@ -490,7 +493,10 @@ button {
 }
 
 .service__detail .service__name {
-  margin-top: 10px;
+  grid-column: 1;
+  grid-row: 2;
+  padding-inline: clamp(8px, 1vw, 10px);
+  margin-top: 4px;
   font-size: clamp(1.9rem, 4.5vw, 3.5rem);
   letter-spacing: 0.14em;
   color: var(--color-burdeos);
@@ -498,7 +504,10 @@ button {
 }
 
 .service__lead {
-  margin-top: 14px;
+  grid-column: 1;
+  grid-row: 3;
+  padding-inline: clamp(8px, 1vw, 10px);
+  margin-top: 8px;
   font-size: clamp(1rem, 1.5vw, 1.1rem);
   line-height: 1.6;
   color: rgba(70, 15, 36, 0.75);
@@ -506,9 +515,12 @@ button {
 }
 
 .service__list {
+  grid-column: 2;
+  grid-row: 2 / 5;
+  align-self: stretch;
+  width: 100%;
   display: grid;
-  gap: 12px;
-  margin-top: clamp(16px, 3vh, 24px);
+  margin-top: clamp(8px, 1.5vh, 14px);
   list-style: none;
   text-align: left;
 }
@@ -804,8 +816,37 @@ button {
     padding: 16px;
   }
 
+  .service__eyebrow,
+  .service__detail .service__name,
+  .service__lead,
+  .service__media,
+  .service__list {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .service__eyebrow {
+    order: 1;
+  }
+
+  .service__detail .service__name {
+    order: 2;
+  }
+
+  .service__lead {
+    order: 3;
+  }
+
   .service__media {
-    min-height: 260px;
+    order: 4;
+  }
+
+  .service__list {
+    order: 5;
+  }
+
+  .service__media {
+    min-height: 0;
   }
 
   .service__list li {
