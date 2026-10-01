@@ -365,8 +365,8 @@ button {
 }
 
 .services__intro {
-  min-height: 40vh;
-  max-width: 600px;
+  min-height: 28vh;
+  max-width: 760px;
   margin-inline: auto;
   display: flex;
   flex-direction: column;
@@ -377,7 +377,7 @@ button {
 }
 
 .services__title {
-  font-size: clamp(2.4rem, 7.5vw, 5.75rem);
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
   font-weight: 300;
   line-height: 1.05;
   letter-spacing: 0.18em;
@@ -388,7 +388,7 @@ button {
 
 .services__subtitle {
   margin-top: clamp(16px, 3vh, 28px);
-  max-width: 640px;
+  max-width: 720px;
   font-size: clamp(0.95rem, 1.6vw, 1.15rem);
   font-weight: 400;
   line-height: 1.6;
@@ -398,138 +398,145 @@ button {
 
 .service {
   position: relative;
-  height: 120vh;
+  max-width: 1180px;
+  margin: 0 auto clamp(28px, 5vw, 56px);
+  padding-inline: clamp(20px, 4vw, 32px);
+}
+
+.service::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: min(54%, 520px);
+  background: url("../assets/diseño.png") no-repeat left center / cover;
+  opacity: 0.12;
+  pointer-events: none;
 }
 
 .service__panel {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  height: 100dvh;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(20px, 4vw, 40px);
+  align-items: stretch;
+  padding: clamp(18px, 2.4vw, 28px);
   overflow: hidden;
-  background: var(--color-burdeos);
+  border: 1px solid rgba(70, 15, 36, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(252, 253, 253, 0.9));
+  box-shadow: 0 12px 36px rgba(70, 15, 36, 0.06);
+}
+
+.service__panel > * {
+  position: relative;
+  z-index: 1;
 }
 
 .service__media {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  clip-path: inset(calc(50% - var(--iris, 0) * 50%));
+  position: relative;
+  min-height: 420px;
+  overflow: hidden;
+  background: var(--color-hielo);
 }
 
-.service__img {
+.service__carousel {
   position: absolute;
   inset: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  background: var(--color-burdeos);
-}
-
-.service__col {
-  display: block;
-  width: 100%;
+  z-index: 3;
   height: 100%;
-  object-fit: cover;
+  background: url("../assets/diseño.png") center / cover;
 }
 
-.service__img--residencial .service__col {
-  background-image: linear-gradient(135deg, #CFE4E9 0%, #8FB3BC 100%);
+.service__carousel .photos__img {
+  object-position: center;
 }
 
-.service__img--empresarial .service__col {
-  background-image:
-    repeating-linear-gradient(0deg, transparent 0 79px, rgba(255, 255, 255, 0.07) 79px 80px),
-    repeating-linear-gradient(90deg, transparent 0 79px, rgba(255, 255, 255, 0.07) 79px 80px),
-    linear-gradient(135deg, #460F24 0%, #6B1A35 100%);
-}
-
-.service__img--comercial .service__col {
-  background-image: linear-gradient(135deg, #2A3B40 0%, #460F24 100%);
-}
-
-.service__overlay {
+.service__media::after {
+  content: "";
   position: absolute;
   inset: 0;
   background:
     linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0.55) 0%,
-      rgba(0, 0, 0, 0.3) 50%,
-      rgba(0, 0, 0, 0.65) 100%
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0.04) 50%,
+      rgba(255, 255, 255, 0.2) 100%
     ),
-    rgba(70, 15, 36, 0.18);
+    rgba(70, 15, 36, 0.08);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.service__carousel .photos__counter,
+.service__carousel .photos__arrow {
+  z-index: 3;
 }
 
 .service__detail {
-  position: absolute;
-  left: 50%;
-  bottom: clamp(40px, 8vh, 88px);
+  position: relative;
   z-index: 2;
-  width: min(860px, calc(100% - clamp(48px, 12vw, 160px)));
-  transform: translateX(-50%);
-  text-align: center;
-  opacity: calc(var(--iris, 0) * 1.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(8px, 1vw, 12px) clamp(8px, 0.5vw, 10px);
+}
+
+.service__eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(70, 15, 36, 0.58);
+}
+
+.service__detail .service__name {
+  margin-top: 10px;
+  font-size: clamp(1.9rem, 4.5vw, 3.5rem);
+  letter-spacing: 0.14em;
+  color: var(--color-burdeos);
+  text-shadow: none;
 }
 
 .service__lead {
-  font-size: clamp(1.25rem, 2.1vw, 1.45rem);
+  margin-top: 14px;
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
   line-height: 1.6;
-  letter-spacing: 0.04em;
-  color: var(--color-blanco);
-  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.45);
+  color: rgba(70, 15, 36, 0.75);
+  text-shadow: none;
 }
 
 .service__list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 6px 40px;
+  gap: 12px;
   margin-top: clamp(16px, 3vh, 24px);
   list-style: none;
   text-align: left;
 }
 
 .service__list li {
-  position: relative;
-  padding-left: 18px;
-  font-size: 1.2rem;
-  line-height: 1.5;
-  color: var(--color-blanco);
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45);
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  padding: 12px 0;
+  border-top: 1px solid rgba(70, 15, 36, 0.12);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: rgba(70, 15, 36, 0.86);
 }
 
-.service__list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.55em;
-  width: 6px;
-  height: 6px;
-  background: var(--color-blanco);
+.service__bullet {
+  width: 22px;
+  height: 22px;
+  margin-top: 2px;
+  border: 1.5px solid rgba(70, 15, 36, 0.35);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at center, rgba(70, 15, 36, 0.82) 0 2px, transparent 2.5px);
 }
 
-.service__head {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  text-align: center;
-  padding: clamp(72px, 12vh, 120px) clamp(24px, 6vw, 80px) clamp(240px, 50vh, 460px);
-  pointer-events: none;
-}
-
-.service__name {
-  font-size: clamp(2.4rem, 7.5vw, 5.75rem);
-  font-weight: 300;
-  line-height: 1.05;
-  letter-spacing: 0.18em;
-  text-indent: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-blanco);
-  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.4);
+.service__list span:last-child {
+  min-width: 0;
 }
 
 /* ---------- Trabajos ---------- */
@@ -792,31 +799,21 @@ button {
     transform: none;
   }
 
-  .service {
-    height: 120vh;
-  }
-
-  .service__head {
-    padding-bottom: clamp(340px, 80vh, 640px);
-  }
-
-  .service__detail {
-    bottom: clamp(24px, 5vh, 40px);
-  }
-
-  .service__list {
+  .service__panel {
     grid-template-columns: 1fr;
-    gap: 4px;
+    padding: 16px;
+  }
+
+  .service__media {
+    min-height: 260px;
   }
 
   .service__list li {
-    font-size: 1.07rem;
-    line-height: 1.35;
+    font-size: 0.95rem;
   }
 
   .service__lead {
-    font-size: 1.15rem;
-    line-height: 1.45;
+    font-size: 1rem;
   }
 
   .works__intro {

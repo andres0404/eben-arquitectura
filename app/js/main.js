@@ -121,41 +121,6 @@ class HeroCarousel {
   }
 }
 
-class ServicesScroll {
-  constructor(section) {
-    this.services = Array.from(section.querySelectorAll(".service"));
-    this.panels = this.services.map((service) => service.querySelector(".service__panel"));
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      this.panels.forEach((panel) => panel.style.setProperty("--iris", 1));
-      return;
-    }
-
-    this.ticking = false;
-    window.addEventListener("scroll", () => this.requestTick(), { passive: true });
-    window.addEventListener("resize", () => this.requestTick(), { passive: true });
-    this.update();
-  }
-
-  requestTick() {
-    if (this.ticking) return;
-    this.ticking = true;
-    requestAnimationFrame(() => {
-      this.update();
-      this.ticking = false;
-    });
-  }
-
-  update() {
-    const half = window.innerHeight / 2;
-    this.services.forEach((service, i) => {
-      const top = service.getBoundingClientRect().top;
-      const iris = Math.min(1, Math.max(0, (half - top) / half));
-      this.panels[i].style.setProperty("--iris", iris.toFixed(4));
-    });
-  }
-}
-
 class CompareSlider {
   constructor(root) {
     this.root = root;
@@ -214,6 +179,7 @@ class CompareSlider {
 class PhotoCarousel {
   constructor(root) {
     this.root = root;
+    this.createRenderSlides();
     this.slides = Array.from(root.querySelectorAll(".photos__img"));
     this.counter = root.querySelector(".photos__counter");
     this.total = this.slides.length;
@@ -260,6 +226,30 @@ class PhotoCarousel {
     });
 
     this.go(0);
+  }
+
+  createRenderSlides() {
+    const pool = RENDER_POOLS[this.root.dataset.renderPool];
+    if (!pool) return;
+
+    const label = this.root.dataset.renderLabel || "Render";
+    const slides = document.createDocumentFragment();
+
+    pool.forEach((id, index) => {
+      const img = document.createElement("img");
+      img.className = "photos__img";
+      img.alt = `${label} ${index + 1} de ${pool.length}`;
+      img.loading = "lazy";
+      img.decoding = "async";
+      if (index === 0) {
+        img.src = `img/renders/optimized/${this.root.dataset.renderPool}${id}.jpg`;
+      } else {
+        img.dataset.src = `img/renders/optimized/${this.root.dataset.renderPool}${id}.jpg`;
+      }
+      slides.append(img);
+    });
+
+    this.root.prepend(slides);
   }
 
   load(i) {
@@ -450,22 +440,6 @@ const RENDER_POOLS = {
   e: [1, 2, 3, 4, 5, 6, 7, 8]
 };
 
-function assignRenders() {
-  document.querySelectorAll(".service__img[data-pool]").forEach((box) => {
-    const pool = RENDER_POOLS[box.dataset.pool];
-    if (!pool) return;
-    const shuffled = pool.slice();
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    box.querySelectorAll(".service__col").forEach((img, i) => {
-      const id = shuffled[i % shuffled.length];
-      img.src = "img/renders/optimized/" + box.dataset.pool + id + ".jpg";
-    });
-  });
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   const navigation = document.querySelector(".site-header");
   if (navigation) new SiteNavigation(navigation);
@@ -473,14 +447,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const hero = document.querySelector(".hero");
   if (hero) new HeroCarousel(hero);
 
-  const services = document.querySelector(".services");
-  if (services) new ServicesScroll(services);
-
   const compare = document.querySelector("[data-compare]");
   if (compare) new CompareSlider(compare);
 
-  const photos = document.querySelector("[data-photos]");
-  if (photos) new PhotoCarousel(photos);
+  document.querySelectorAll("[data-photos]").forEach((photos) => new PhotoCarousel(photos));
 
   const faq = document.querySelector(".faq");
   if (faq) new FaqAccordion(faq);
@@ -488,5 +458,4 @@ document.addEventListener("DOMContentLoaded", () => {
   const xray = document.querySelector("[data-xray]");
   if (xray) new XrayHover(xray);
 
-  assignRenders();
 });
