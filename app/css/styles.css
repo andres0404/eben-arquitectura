@@ -618,10 +618,21 @@ button {
 }
 
 .works__text p {
-  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-  line-height: 1.7;
-  letter-spacing: 0.02em;
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  line-height: 1.6;
+  letter-spacing: 0;
   color: var(--color-burdeos);
+}
+
+.works__text .works__eyebrow {
+  display: block;
+  padding-inline: 0;
+  margin-bottom: clamp(14px, 2vh, 22px);
+  font-size: 0.72rem;
+}
+
+.works__text .works__eyebrow::before {
+  margin-bottom: 8px;
 }
 
 /* ---------- Carrusel de fotos ---------- */
@@ -1074,6 +1085,16 @@ button {
   text-align: center;
 }
 
+.cta__card {
+  position: relative;
+  width: min(1150px, 100%);
+  padding: clamp(24px, 4vw, 48px);
+  border: 1px solid rgba(70, 15, 36, 0.1);
+  background: transparent;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.16);
+  color: var(--color-burdeos);
+}
+
 .cta__grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
@@ -1081,6 +1102,30 @@ button {
   gap: clamp(32px, 5vw, 72px);
   width: min(1150px, 100%);
   margin: 0 auto;
+}
+
+.cta__card--base > .cta__grid .cta__title {
+  color: var(--color-blanco);
+}
+
+.cta__card--base > .cta__grid .cta__text {
+  color: var(--color-hielo);
+}
+
+.cta__eyebrow {
+  padding-inline: 0;
+  margin-bottom: clamp(14px, 2vh, 22px);
+  color: var(--color-hielo);
+  font-size: 0.72rem;
+}
+
+.cta__eyebrow::before {
+  content: "";
+  display: block;
+  width: clamp(32px, 4vw, 52px);
+  height: 1px;
+  margin-bottom: 8px;
+  background: var(--color-hielo);
 }
 
 .cta__media {
@@ -1101,6 +1146,10 @@ button {
   position: absolute;
   inset: 0;
   z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: inherit;
   overflow: hidden;
   background: var(--color-negro);
   clip-path: circle(var(--xray-radius, 0px) at var(--xray-x, -300px) var(--xray-y, -300px));
@@ -1108,8 +1157,13 @@ button {
   will-change: clip-path;
 }
 
+.cta__layer .cta__card {
+  border-color: transparent;
+  box-shadow: none;
+}
+
 .cta__layer .cta__grid {
-  height: 100%;
+  height: auto;
   background-image:
     radial-gradient(1.5px 1.5px at 8% 22%, rgba(255, 255, 255, 0.9) 50%, transparent 51%),
     radial-gradient(1px 1px at 17% 76%, rgba(255, 255, 255, 0.55) 50%, transparent 51%),
@@ -1133,23 +1187,16 @@ button {
   color: var(--color-hielo);
 }
 
-.cta::before,
-.cta::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  width: min(280px, 45vw);
-  height: 1px;
-  background: rgba(207, 228, 233, 0.45);
-  transform: translateX(-50%);
+.cta__layer .cta__title {
+  color: var(--color-blanco);
 }
 
-.cta::before {
-  top: clamp(28px, 5vh, 48px);
+.cta__layer .cta__whatsapp {
+  background: #128c4a;
 }
 
-.cta::after {
-  bottom: clamp(28px, 5vh, 48px);
+.cta__layer .cta__whatsapp:hover {
+  background: #0d6f3a;
 }
 
 .cta__content {
@@ -1351,6 +1398,10 @@ button {
 @media (max-width: 640px) {
   .cta {
     min-height: 0;
+  }
+
+  .cta__card {
+    padding: 16px;
   }
 
   .cta__grid {
