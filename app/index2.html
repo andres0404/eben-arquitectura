@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#460F24">
   <meta name="description" content="Eben Arquitectura y Construcción S.A.S. — Diseño, construcción, remodelación, adecuación y mantenimiento en Colombia.">
-  <title>Eben Arquitectura y Construcción S.A.S. | Propuesta editorial</title>
+  <title>Eben Arquitectura y Construcción S.A.S. | Variante Editorial</title>
 
   <link rel="icon" href="img/logos/transparente/simbolo_color.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,43 +13,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <style>
-    /* Propuesta editorial: menos ruido, más jerarquía y una historia por sección. */
-    .proposal-editorial .hero__content {
-      align-items: flex-start;
-      max-width: 760px;
-      text-align: left;
+    /* Variante editorial: ritmo de revista y foco en el caso de estudio. */
+    .variant-editorial .works {
+      background: var(--color-blanco);
+      padding-bottom: clamp(72px, 12vh, 136px);
     }
 
-    .proposal-editorial .hero__subtitle {
-      max-width: 42ch;
-    }
-
-    .proposal-editorial .hero__cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      margin-top: clamp(24px, 4vh, 40px);
-      padding: 14px 18px;
-      border: 1px solid var(--color-hielo);
-      color: var(--color-hielo);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
-    }
-
-    .proposal-editorial .hero__cta:hover,
-    .proposal-editorial .hero__cta:focus-visible {
-      background: var(--color-hielo);
-      color: var(--color-burdeos);
-      transform: translateY(-2px);
-    }
-
-    .proposal-editorial .services__intro,
-    .proposal-editorial .works__intro,
-    .proposal-editorial .faq__intro {
+    .variant-editorial .works__intro {
+      min-height: 22vh;
       align-items: flex-start;
       max-width: 1280px;
       padding-right: clamp(24px, 7vw, 96px);
@@ -57,73 +28,12 @@
       text-align: left;
     }
 
-    .proposal-editorial .services__intro {
-      min-height: 22vh;
-    }
-
-    .proposal-editorial .services__subtitle {
-      max-width: 48ch;
-    }
-
-    .proposal-editorial .services__symbol {
-      opacity: 0.07;
-    }
-
-    .proposal-editorial .service {
-      max-width: 1320px;
-      padding-right: clamp(24px, 7vw, 96px);
-      padding-left: clamp(24px, 7vw, 96px);
-    }
-
-    .proposal-editorial .service__panel {
-      border: 0;
-      background: rgba(255, 255, 255, 0.72);
-      box-shadow: none;
-    }
-
-    .proposal-editorial .service__list li {
-      border-top-color: rgba(70, 15, 36, 0.2);
-    }
-
-    .proposal-editorial .works {
-      padding-bottom: clamp(72px, 12vh, 136px);
-    }
-
-    .proposal-editorial .works__intro {
-      min-height: 22vh;
-    }
-
-    .proposal-editorial .works {
-      position: relative;
-      overflow: clip;
-    }
-
-    .proposal-editorial .works__intro {
-      position: relative;
-      z-index: 1;
-    }
-
-    .proposal-editorial .works__symbol {
-      position: sticky;
-      top: 0;
-      z-index: 0;
-      width: 100vw;
-      height: 100vh;
-      margin-bottom: -100vh;
-      transform: translateX(-60%);
-      background: url("../img/logos/transparente/simbolo_negro.png") no-repeat center / cover;
-      opacity: 0.1;
-      pointer-events: none;
-    }
-
-    .proposal-editorial .works__title {
+    .variant-editorial .works__title {
       font-size: clamp(2.8rem, 6vw, 5.2rem);
     }
 
-    .proposal-editorial .works__grid {
-      position: relative;
-      z-index: 1;
-      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+    .variant-editorial .works__grid {
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
       gap: clamp(40px, 7vw, 112px);
       max-width: 1320px;
       padding-right: clamp(24px, 7vw, 96px);
@@ -131,138 +41,81 @@
       align-items: start;
     }
 
-    .proposal-editorial .compare {
+    .variant-editorial .compare {
       height: clamp(480px, 68vh, 720px);
     }
 
-    .proposal-editorial .works__side {
+    .variant-editorial .works__side {
       gap: clamp(32px, 6vh, 64px);
       padding-top: clamp(16px, 5vh, 64px);
     }
 
-    .proposal-editorial .works__text {
+    .variant-editorial .works__text {
       padding-top: 18px;
       border-top: 1px solid rgba(70, 15, 36, 0.28);
     }
 
-    .proposal-editorial .works__text p:last-child {
+    .variant-editorial .works__text p:last-child {
       max-width: 38ch;
       font-size: clamp(1.05rem, 1.7vw, 1.3rem);
       line-height: 1.65;
     }
 
-    .proposal-editorial .works__meta {
-      margin-top: 14px;
-      color: rgba(70, 15, 36, 0.58);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .proposal-editorial .works__side .photos {
+    .variant-editorial .works__side .photos {
       height: clamp(300px, 42vh, 460px);
       box-shadow: 0 18px 42px rgba(70, 15, 36, 0.14);
     }
 
-    .proposal-editorial .band {
+    .variant-editorial .band {
       height: clamp(22vh, 28vh, 360px);
     }
 
-    .proposal-editorial .faq {
+    .variant-editorial .faq {
       padding-bottom: clamp(72px, 12vh, 136px);
     }
 
-    .proposal-editorial .faq__intro {
+    .variant-editorial .faq__intro {
       min-height: 22vh;
+      align-items: flex-start;
+      max-width: 1100px;
+      text-align: left;
     }
 
-    .proposal-editorial .faq__item:nth-child(odd),
-    .proposal-editorial .faq__item:nth-child(even) {
-      background: transparent;
-      border-bottom: 1px solid rgba(70, 15, 36, 0.14);
+    .variant-editorial .faq__list {
+      max-width: 1100px;
     }
 
-    .proposal-editorial .cta {
-      background: var(--color-hielo);
-      color: var(--color-negro);
+    .variant-editorial .cta {
       padding-top: clamp(88px, 14vh, 144px);
       padding-bottom: clamp(88px, 14vh, 144px);
     }
 
-    .proposal-editorial .cta__card--base {
-      border-color: rgba(20, 23, 25, 0.3);
-      background: #141719;
-      box-shadow: 0 22px 56px rgba(20, 23, 25, 0.24);
-    }
-
-    .proposal-editorial .cta__card--base .cta__eyebrow::before {
-      background: var(--color-hielo);
-    }
-
-    .proposal-editorial .cta__socials {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .proposal-editorial .cta__social {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 38px;
-      height: 38px;
-      border: 1px solid rgba(207, 228, 233, 0.55);
-      color: var(--color-hielo);
-      transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
-    }
-
-    .proposal-editorial .cta__social:hover,
-    .proposal-editorial .cta__social:focus-visible {
-      background: var(--color-hielo);
-      color: #141719;
-      transform: translateY(-2px);
-    }
-
-    .proposal-editorial .cta__social svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    .proposal-editorial .cta__layer .cta__social {
-      border-color: rgba(255, 255, 255, 0.6);
-      color: var(--color-blanco);
-    }
-
     @media (max-width: 640px) {
-      .proposal-editorial .hero__content,
-      .proposal-editorial .services__intro,
-      .proposal-editorial .works__intro,
-      .proposal-editorial .faq__intro {
+      .variant-editorial .works__intro,
+      .variant-editorial .faq__intro {
         align-items: flex-start;
         padding-right: 24px;
         padding-left: 24px;
         text-align: left;
       }
 
-      .proposal-editorial .service,
-      .proposal-editorial .works__grid {
+      .variant-editorial .works__grid {
+        gap: 32px;
         padding-right: 24px;
         padding-left: 24px;
       }
 
-      .proposal-editorial .compare {
+      .variant-editorial .compare {
         height: 58vh;
       }
 
-      .proposal-editorial .works__side {
+      .variant-editorial .works__side {
         padding-top: 0;
       }
     }
   </style>
 </head>
-<body class="proposal-editorial">
+<body class="variant-editorial">
 
   <header class="site-header">
     <img
@@ -295,7 +148,6 @@
           <div class="hero__content">
             <h1 class="hero__title">Residencial</h1>
             <p class="hero__subtitle">Transformamos viviendas y entregamos espacios completamente terminados</p>
-            <a class="hero__cta" href="#trabajos">Ver trabajos <span aria-hidden="true">→</span></a>
           </div>
         </article>
 
@@ -349,7 +201,7 @@
     <section class="services" id="servicios" aria-labelledby="services-title">
       <div class="services__intro">
         <h2 class="services__title" id="services-title">Servicios</h2>
-        <p class="services__subtitle">Diseño, construcción, remodelación, adecuación y mantenimiento para los tres nichos</p>
+        <p class="services__subtitle">(Diseño, construcción, remodelación, adecuación y mantenimiento para los tres nichos)</p>
       </div>
       <div class="services__symbol" aria-hidden="true"></div>
 
@@ -369,13 +221,13 @@
           <div class="service__detail">
             <p class="service__eyebrow">Nuestras líneas de negocio</p>
             <h3 class="service__name">Residencial</h3>
-            <p class="service__lead">Creamos y transformamos viviendas para convertirlas en espacios funcionales, cómodos y con acabados que reflejan tu estilo.</p>
+            <p class="service__lead">Nos enfocamos en transformar viviendas y entregar espacios completamente terminados.</p>
             <ul class="service__list">
-              <li><img class="service__bullet" src="assets/01_remodelaciones_integrales.png" alt=""><span><strong>Remodelaciones integrales</strong> Renovamos apartamentos y casas de manera integral desde la obra gris, coordinando cada etapa del proyecto hasta los acabados finales.</span></li>
-              <li><img class="service__bullet" src="assets/02_cocinas_integrales.png" alt=""><span><strong>Diseño y fabricación de mobiliario a medida</strong> Cocinas integrales, clósets, muebles de sala y entretenimiento, camas abatibles, muebles de baño y soluciones personalizadas para cada espacio.</span></li>
-              <li><img class="service__bullet" src="assets/03_porcelanato_enchapes_pisos.png" alt=""><span><strong>Porcelanato, enchapes y pisos</strong> Instalamos pisos y revestimientos con precisión y cuidado en cada detalle, logrando superficies bien terminadas, resistentes y duraderas.</span></li>
-              <li><img class="service__bullet" src="assets/04_pintura_estuco_acabados.png" alt=""><span><strong>Pintura, estuco y acabados arquitectónicos</strong> Renovamos y personalizamos tus espacios mediante pintura, estucos y acabados que complementan el diseño y la identidad de tu vivienda.</span></li>
-              <li><img class="service__bullet" src="assets/05_adecuaciones_electricas_hidraulicas.png" alt=""><span><strong>Adecuaciones eléctricas, hidráulicas y sanitarias</strong> Ejecutamos las adecuaciones necesarias para garantizar instalaciones seguras, eficientes y acordes con las necesidades de cada espacio.</span></li>
+               <li><img class="service__bullet" src="assets/01_remodelaciones_integrales.png" alt=""><span>Remodelaciones integrales. Adecuación de apartamentos y casas desde obra gris hasta acabado final.</span></li>
+               <li><img class="service__bullet" src="assets/02_cocinas_integrales.png" alt=""><span>Diseño y ejecución de cocinas integrales. Remodelación de baños.</span></li>
+               <li><img class="service__bullet" src="assets/03_porcelanato_enchapes_pisos.png" alt=""><span>Instalación de porcelanato, enchapes y pisos. Cielos rasos y sistemas drywall.</span></li>
+               <li><img class="service__bullet" src="assets/04_pintura_estuco_acabados.png" alt=""><span>Pintura, estuco y acabados arquitectónicos. Carpintería arquitectónica y mobiliario a medida.</span></li>
+               <li><img class="service__bullet" src="assets/05_adecuaciones_electricas_hidraulicas.png" alt=""><span>Adecuaciones eléctricas, hidráulicas y sanitarias. Impermeabilizaciones. Diseño y distribución de espacios.</span></li>
             </ul>
           </div>
         </div>
@@ -397,14 +249,13 @@
           <div class="service__detail">
             <p class="service__eyebrow">Nuestras líneas de negocio</p>
             <h3 class="service__name">Empresarial</h3>
-            <p class="service__lead">Soluciones integrales para adecuar, mantener y transformar espacios empresariales con un solo equipo.</p>
+            <p class="service__lead">Soluciones para empresas que necesitan adecuar, mantener o transformar sus instalaciones sin tener que contratar múltiples proveedores.</p>
             <ul class="service__list">
-              <li><img class="service__bullet" src="assets/01_remodelaciones_integrales.png" alt=""><span><strong>Adecuaciones y remodelaciones corporativas</strong> Transformamos oficinas, bodegas y espacios empresariales según tus necesidades.</span></li>
-              <li><img class="service__bullet" src="assets/07_mantenimiento_locativo_transparente.png" alt=""><span><strong>Mantenimiento locativo</strong> Mantenimiento preventivo y correctivo para conservar tus instalaciones en óptimas condiciones.</span></li>
-              <li><img class="service__bullet" src="assets/05_adecuaciones_electricas_hidraulicas.png" alt=""><span><strong>Instalaciones y adecuaciones técnicas</strong> Soluciones eléctricas, hidráulicas, sanitarias, cableado estructurado y CCTV.</span></li>
-              <li><img class="service__bullet" src="assets/04_pintura_estuco_acabados.png" alt=""><span><strong>Pintura, drywall y acabados</strong> Pintura, resanes, cielos rasos, divisiones, pisos y enchapes.</span></li>
-              <li><img class="service__bullet" src="assets/02_cocinas_integrales.png" alt=""><span><strong>Mobiliario y soluciones a medida</strong> Diseñamos mobiliario funcional para oficinas y espacios corporativos.</span></li>
-              <li><img class="service__bullet" src="assets/06_fachadas_puertas_persianas_transparente.png" alt=""><span><strong>Fachadas e infraestructura</strong> Adecuación, mantenimiento y reparación de fachadas e infraestructura.</span></li>
+              <li><img class="service__bullet" src="assets/01_remodelaciones_integrales.png" alt=""><span>Adecuaciones locativas de oficinas y bodegas.</span></li>
+              <li><img class="service__bullet" src="assets/07_mantenimiento_locativo_transparente.png" alt=""><span>Mantenimiento locativo preventivo y correctivo.</span></li>
+              <li><img class="service__bullet" src="assets/08_remodelacion_espacios_corporativos_transparente.png" alt=""><span>Remodelación de espacios corporativos.</span></li>
+              <li><img class="service__bullet" src="assets/04_pintura_estuco_acabados.png" alt=""><span>Pintura, resanes y acabados. Drywall y cielos rasos.</span></li>
+              <li><img class="service__bullet" src="assets/03_porcelanato_enchapes_pisos.png" alt=""><span>Pisos y enchapes. Plomería y reparaciones hidráulicas. Adecuación y mantenimiento de fachadas. Reparaciones generales de infraestructura.</span></li>
             </ul>
           </div>
         </div>
@@ -426,14 +277,13 @@
           <div class="service__detail">
             <p class="service__eyebrow">Nuestras líneas de negocio</p>
             <h3 class="service__name">Comercial</h3>
-            <p class="service__lead">Diseñamos, construimos y transformamos espacios comerciales funcionales, atractivos y pensados para cada negocio.</p>
+            <p class="service__lead">Diseñamos, construimos y adecuamos espacios destinados a actividades comerciales.</p>
             <ul class="service__list">
-              <li><img class="service__bullet" src="assets/01_remodelaciones_integrales.png" alt=""><span><strong>Adecuación y remodelación de locales</strong> Transformamos locales y establecimientos para adaptarlos a las necesidades de cada negocio.</span></li>
-              <li><img class="service__bullet" src="assets/09_diseno_espacios_comerciales_transparente.png" alt=""><span><strong>Diseño y distribución de espacios comerciales</strong> Creamos espacios funcionales que aprovechan mejor cada área y mejoran la experiencia del cliente.</span></li>
-              <li><img class="service__bullet" src="assets/06_fachadas_puertas_persianas_transparente.png" alt=""><span><strong>Fachadas e imagen comercial</strong> Diseñamos y adecuamos fachadas, señalización y elementos que fortalecen la identidad del establecimiento.</span></li>
-              <li><img class="service__bullet" src="assets/04_pintura_estuco_acabados.png" alt=""><span><strong>Pintura, drywall y acabados</strong> Ejecutamos pintura, cielos rasos, divisiones, pisos, enchapes y acabados arquitectónicos.</span></li>
-              <li><img class="service__bullet" src="assets/02_cocinas_integrales.png" alt=""><span><strong>Mobiliario comercial a medida</strong> Diseñamos y fabricamos barras, mostradores, exhibidores y mobiliario adaptado a cada espacio.</span></li>
-              <li><img class="service__bullet" src="assets/05_adecuaciones_electricas_hidraulicas.png" alt=""><span><strong>Instalaciones y adecuaciones técnicas</strong> Soluciones eléctricas, hidráulicas, sanitarias e iluminación para espacios comerciales.</span></li>
+              <li><img class="service__bullet" src="assets/01_remodelaciones_integrales.png" alt=""><span>Adecuación y remodelación de locales.</span></li>
+              <li><img class="service__bullet" src="assets/09_diseno_espacios_comerciales_transparente.png" alt=""><span>Diseño y distribución de espacios comerciales.</span></li>
+              <li><img class="service__bullet" src="assets/10_acabados_arquitectonicos_transparente.png" alt=""><span>Acabados arquitectónicos.</span></li>
+              <li><img class="service__bullet" src="assets/06_fachadas_puertas_persianas_transparente.png" alt=""></span><span>Fachadas. Puertas y persianas comerciales.</span></li>
+              <li><img class="service__bullet" src="assets/04_pintura_estuco_acabados.png" alt=""><span>Cielos rasos y drywall. Pisos y enchapes. Iluminación y adecuaciones eléctricas. Carpintería y mobiliario. Señalización y elementos de imagen del establecimiento.</span></li>
             </ul>
           </div>
         </div>
@@ -444,7 +294,6 @@
       <div class="works__intro">
         <h2 class="works__title" id="works-title">Trabajos</h2>
       </div>
-      <div class="works__symbol" aria-hidden="true"></div>
 
       <div class="works__grid">
         <div class="compare" data-compare>
@@ -472,7 +321,6 @@
         <div class="works__side">
           <div class="works__text">
             <p class="service__eyebrow works__eyebrow">Nuestra experiencia</p>
-            <p class="works__meta">Proyecto empresarial · Remodelación y adecuación</p>
             <p>Amplia experiencia en ejecución de remodelaciones, adecuaciones y mantenimiento locativo. Con Eben garantizamos que su proyecto se defina con diseños modernos, se lleve a cabo en los plazos acordados con mano de obra responsable y cuidadosa para que cada peso que paga se traduzca en valorización para su inmueble</p>
           </div>
 
@@ -560,6 +408,15 @@
           </div>
         </div>
 
+        <div class="faq__item">
+          <button class="faq__q" type="button" id="faq-q4" aria-expanded="false" aria-controls="faq-a4">
+            <span>¿Puedo contratar únicamente un servicio específico?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a" id="faq-a4" role="region" aria-labelledby="faq-q4">
+            <p>Sí. Además de proyectos integrales, realizamos servicios específicos de adecuación, mantenimiento, acabados, instalaciones y mobiliario.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -579,20 +436,6 @@
               </svg>
               <span>Contáctenos por WhatsApp</span>
             </a>
-            <div class="cta__socials" aria-label="Redes sociales">
-              <a class="cta__social" href="https://www.instagram.com/espacios.eben/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Eben">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
-                  <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
-                  <circle cx="17.4" cy="6.7" r="1" fill="currentColor"/>
-                </svg>
-              </a>
-              <a class="cta__social" href="https://www.facebook.com/profile.php?id=61594440430104" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Eben">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill="currentColor" d="M13.7 21v-8h2.7l.4-3.1h-3.1V8c0-.9.3-1.5 1.6-1.5h1.7V3.7c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.2H8v3.1h2.6v8h3.1Z"/>
-                </svg>
-              </a>
-            </div>
           </div>
         </div>
       </div>
@@ -613,20 +456,6 @@
                 </svg>
                 <span>Contáctenos por WhatsApp</span>
               </span>
-              <div class="cta__socials" aria-label="Redes sociales">
-                <span class="cta__social" aria-label="Instagram de Eben">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
-                    <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
-                    <circle cx="17.4" cy="6.7" r="1" fill="currentColor"/>
-                  </svg>
-                </span>
-                <span class="cta__social" aria-label="Facebook de Eben">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path fill="currentColor" d="M13.7 21v-8h2.7l.4-3.1h-3.1V8c0-.9.3-1.5 1.6-1.5h1.7V3.7c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.2H8v3.1h2.6v8h3.1Z"/>
-                  </svg>
-                </span>
-              </div>
             </div>
             </div>
           </div>
