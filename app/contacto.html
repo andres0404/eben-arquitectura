@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Cinco prototipos de sección de contacto para Eben Arquitectura y Construcción.">
+  <title>Prototipos de contacto — Eben</title>
+  <link rel="icon" href="img/logos/transparente/simbolo_color.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add("js");</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --burdeos: #460F24;
+      --hielo: #CFE4E9;
+      --blanco: #FFFFFF;
+      --negro: #000000;
+      --wa: #25D366;
+      --wa-hover: #1EBE5B;
+      --wa-dark: #075E54;
+      --wa-deep: #0B4D33;
+      --ig: linear-gradient(45deg, #F58529 0%, #DD2A7B 50%, #8134AF 100%);
+      --fb: #1877F2;
+      --ink: #141719;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100%;
+      background: #0C0C0E;
+      color: var(--ink);
+      font-family: "Lato", sans-serif;
+      font-weight: 400;
+      line-height: 1.5;
+      overflow-x: clip;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    section[id] { scroll-margin-top: 56px; }
+
+    :focus-visible { outline: 2px solid var(--focus, var(--hielo)); outline-offset: 3px; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      clip-path: inset(50%);
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: 0; left: 8px;
+      z-index: 100;
+      padding: 10px 16px;
+      background: var(--hielo);
+      color: var(--ink);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transform: translateY(-150%);
+      transition: transform 150ms var(--ease-out);
+    }
+    .skip-link:focus { transform: translateY(8px); }
+
+    /* ---------- Encabezado de página ---------- */
+
+    .page-head {
+      padding: clamp(40px, 8vh, 72px) clamp(20px, 6vw, 64px);
+      background: #0C0C0E;
+      color: var(--blanco);
+      text-align: center;
+    }
+    .page-head h1 {
+      font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+      font-weight: 900;
+      letter-spacing: -0.01em;
+    }
+    .page-head p {
+      max-width: 56ch;
+      margin-top: 10px;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: clamp(0.92rem, 1.6vw, 1.02rem);
+    }
+
+    /* ---------- Selector de prototipos ---------- */
+
+    .picker {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      gap: 4px;
+      padding: 8px 10px;
+      overflow-x: auto;
+      background: rgba(12, 12, 14, 0.78);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(16px) saturate(1.4);
+      -webkit-backdrop-filter: blur(16px) saturate(1.4);
+      scrollbar-width: none;
+    }
+    .picker::-webkit-scrollbar { display: none; }
+    .picker a {
+      flex: none;
+      padding: 8px 12px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 150ms ease, background-color 150ms ease;
+    }
+    .picker a:hover { color: #FFFFFF; }
+    .picker a[aria-current="true"] { background: var(--hielo); color: var(--ink); }
+
+    /* ---------- Secciones ---------- */
+
+    .proto {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 92vh;
+      min-height: 92dvh;
+      padding: clamp(72px, 11vh, 120px) clamp(20px, 6vw, 80px);
+    }
+
+    .proto__badge {
+      position: absolute;
+      top: 14px; left: 16px;
+      z-index: 6;
+      padding: 5px 10px;
+      background: rgba(127, 127, 127, 0.22);
+      border: 1px solid rgba(127, 127, 127, 0.42);
+      color: inherit;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 760px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .icon { width: 18px; height: 18px; flex: none; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      width: 100%;
+      margin-top: clamp(28px, 5vh, 44px);
+    }
+
+    /* ================= Prototipo 1 — animate ================= */
+
+    .p1 {
+      background: var(--negro);
+      color: var(--blanco);
+      --focus: var(--hielo);
+    }
+    .p1 .eyebrow { color: var(--hielo); }
+    .p1__title {
+      margin-top: 14px;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: 0.14em;
+      text-indent: 0.14em;
+      text-transform: uppercase;
+    }
+    .p1__text {
+      max-width: 46ch;
+      margin-top: 18px;
+      color: var(--hielo);
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      letter-spacing: 0.04em;
+    }
+
+    .b1 {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 14px 22px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.38);
+      color: var(--blanco);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 160ms var(--ease-out), background-color 200ms ease,
+        color 200ms ease, border-color 200ms ease;
+    }
+    .b1--wa {
+      background: var(--wa);
+      border-color: var(--wa);
+      color: #06301B;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .b1:hover { transform: translateY(-2px); }
+      .b1--wa:hover { background: #3CE07E; border-color: #3CE07E; }
+      .b1:not(.b1--wa):hover { background: var(--blanco); border-color: var(--blanco); color: var(--negro); }
+    }
+    .b1:active { transform: scale(0.97); transition-duration: 100ms; }
+
+    .js .p1 .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+    }
+    .js .p1[data-visible] .reveal { opacity: 1; transform: translateY(0); }
+    .p1 .r2 { transition-delay: 80ms; }
+    .p1 .r3 { transition-delay: 160ms; }
+    .p1 .r4 { transition-delay: 240ms; }
+
+    /* ================= Prototipo 2 — frontend-ui-engineering ================= */
+
+    .p2 {
+      background: var(--blanco);
+      color: #1A1A1A;
+      --focus: var(--burdeos);
+    }
+    .p2 .eyebrow { color: var(--burdeos); }
+    .p2__title {
+      margin-top: 14px;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      text-wrap: balance;
+    }
+    .p2__text {
+      max-width: 48ch;
+      margin-top: 16px;
+      color: #4A4A4A;
+      font-size: clamp(1rem, 1.6vw, 1.1rem);
+      text-wrap: balance;
+    }
+
+    .p2__actions {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 380px;
+      margin-top: clamp(28px, 5vh, 40px);
+    }
+    @media (min-width: 768px) {
+      .p2__actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: none;
+      }
+    }
+
+    .b2 {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 22px;
+      background: var(--blanco);
+      border: 2px solid var(--burdeos);
+      color: var(--burdeos);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      transition: background-color 150ms ease, color 150ms ease,
+        border-color 150ms ease, transform 150ms var(--ease-out);
+    }
+    @media (min-width: 768px) { .b2 { width: auto; } }
+    .b2--wa {
+      background: var(--wa-dark);
+      border-color: var(--wa-dark);
+      color: var(--blanco);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .b2:hover { background: var(--burdeos); color: var(--blanco); }
+      .b2--wa:hover { background: #054A44; border-color: #054A44; color: var(--blanco); }
+    }
+    .b2:active { transform: scale(0.97); transition-duration: 100ms; }
+    .b2:focus-visible { outline: 3px solid var(--burdeos); outline-offset: 2px; }
+    .b2--wa:focus-visible { outline-color: var(--wa-dark); }
+
+    /* ================= Prototipo 3 — emil-design-eng ================= */
+
+    .p3 {
+      background: var(--hielo);
+      color: var(--burdeos);
+      --focus: var(--burdeos);
+    }
+    .p3 .eyebrow { color: rgba(70, 15, 36, 0.75); }
+    .p3__title {
+      margin-top: 14px;
+      font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      text-wrap: balance;
+    }
+    .p3__text {
+      max-width: 44ch;
+      margin-top: 16px;
+      color: rgba(70, 15, 36, 0.78);
+      font-size: clamp(1rem, 1.6vw, 1.1rem);
+    }
+    .p3 .actions {
+      padding-top: clamp(24px, 4vh, 36px);
+      border-top: 1px solid rgba(70, 15, 36, 0.28);
+      max-width: 560px;
+    }
+
+    .b3 {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 13px 20px;
+      background: transparent;
+      border: 1px solid rgba(70, 15, 36, 0.45);
+      color: var(--burdeos);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background-color 200ms ease, color 200ms ease,
+        border-color 200ms ease, transform 160ms var(--ease-out);
+    }
+    .b3--wa {
+      background: var(--wa-deep);
+      border-color: var(--wa-deep);
+      color: var(--blanco);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .b3:hover { background: var(--burdeos); border-color: var(--burdeos); color: var(--hielo); }
+      .b3--wa:hover { background: #083C27; border-color: #083C27; color: var(--blanco); }
+    }
+    .b3:active { transform: scale(0.97); transition-duration: 100ms; }
+
+    /* ================= Prototipo 4 — design-dna ================= */
+
+    .p4 {
+      background: var(--hielo);
+      color: var(--negro);
+      --focus: var(--burdeos);
+      text-align: center;
+      padding-top: clamp(88px, 14vh, 144px);
+      padding-bottom: clamp(88px, 14vh, 144px);
+      overflow: hidden;
+    }
+
+    .p4__card {
+      position: relative;
+      width: min(1150px, 100%);
+      padding: clamp(24px, 4vw, 48px);
+      border: 1px solid rgba(70, 15, 36, 0.1);
+      background: transparent;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.16);
+    }
+    .p4__card--base {
+      border-color: rgba(20, 23, 25, 0.3);
+      background: var(--ink);
+      box-shadow: 0 22px 56px rgba(20, 23, 25, 0.24);
+    }
+
+    .p4__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+      align-items: center;
+      gap: clamp(32px, 5vw, 72px);
+      width: min(1150px, 100%);
+      margin: 0 auto;
+    }
+
+    .p4__media {
+      position: relative;
+      aspect-ratio: 3 / 2;
+      overflow: hidden;
+    }
+    .p4__media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .p4__content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .p4__eyebrow {
+      margin-bottom: clamp(14px, 2vh, 22px);
+      color: var(--hielo);
+      font-size: 0.72rem;
+    }
+    .p4__eyebrow::before {
+      content: "";
+      display: block;
+      width: clamp(32px, 4vw, 52px);
+      height: 1px;
+      margin-bottom: 8px;
+      background: var(--hielo);
+    }
+
+    .p4__title {
+      font-size: clamp(1.75rem, 4.5vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: 0.18em;
+      text-indent: 0.18em;
+      text-transform: uppercase;
+      color: var(--blanco);
+    }
+    .p4__text {
+      max-width: 520px;
+      margin-top: clamp(16px, 3vh, 24px);
+      color: var(--hielo);
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      letter-spacing: 0.04em;
+    }
+
+    .p4__wa {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 56px;
+      margin-top: clamp(28px, 5vh, 44px);
+      padding: 16px 24px;
+      background: var(--wa);
+      color: var(--blanco);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background-color 250ms ease, transform 250ms ease;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .p4__wa:hover { background: var(--wa-hover); transform: translateY(-2px); }
+    }
+    .p4__wa:active { transform: scale(0.97); transition-duration: 100ms; }
+    .p4__wa .icon { width: 25px; height: 25px; }
+
+    .p4__socials {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .p4__social {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(207, 228, 233, 0.55);
+      color: var(--hielo);
+      transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .p4__social:hover { background: var(--hielo); color: var(--ink); transform: translateY(-2px); }
+    }
+    .p4__social:active { transform: scale(0.94); transition-duration: 100ms; }
+
+    .p4__layer {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: inherit;
+      overflow: hidden;
+      background: var(--negro);
+      clip-path: circle(var(--xray-r, 0px) at var(--xray-x, -400px) var(--xray-y, -400px));
+      will-change: clip-path;
+    }
+    .p4__layer .p4__card {
+      border-color: transparent;
+      background: transparent;
+      box-shadow: none;
+    }
+    .p4__layer .p4__grid {
+      background-image:
+        radial-gradient(1.5px 1.5px at 8% 22%, rgba(255, 255, 255, 0.9) 50%, transparent 51%),
+        radial-gradient(1px 1px at 17% 76%, rgba(255, 255, 255, 0.55) 50%, transparent 51%),
+        radial-gradient(2px 2px at 27% 38%, rgba(255, 255, 255, 0.72) 50%, transparent 51%),
+        radial-gradient(1px 1px at 39% 15%, rgba(255, 255, 255, 0.45) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 47% 82%, rgba(255, 255, 255, 0.8) 50%, transparent 51%),
+        radial-gradient(1px 1px at 58% 29%, rgba(255, 255, 255, 0.5) 50%, transparent 51%),
+        radial-gradient(2px 2px at 66% 67%, rgba(255, 255, 255, 0.7) 50%, transparent 51%),
+        radial-gradient(1px 1px at 76% 12%, rgba(255, 255, 255, 0.6) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 84% 48%, rgba(255, 255, 255, 0.85) 50%, transparent 51%),
+        radial-gradient(1px 1px at 94% 84%, rgba(255, 255, 255, 0.48) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 4% 91%, rgba(255, 255, 255, 0.42) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 22% 58%, rgba(255, 255, 255, 0.62) 50%, transparent 51%),
+        radial-gradient(1px 1px at 34% 91%, rgba(255, 255, 255, 0.5) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 54% 53%, rgba(255, 255, 255, 0.72) 50%, transparent 51%),
+        radial-gradient(1px 1px at 71% 91%, rgba(255, 255, 255, 0.55) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 91% 28%, rgba(255, 255, 255, 0.65) 50%, transparent 51%);
+    }
+    .p4__layer .p4__title { color: var(--blanco); }
+    .p4__layer .p4__text { color: var(--hielo); }
+    .p4__layer .p4__wa { background: #128C4A; }
+    @media (hover: hover) and (pointer: fine) {
+      .p4__layer .p4__wa:hover { background: #0D6F3A; }
+    }
+    .p4__layer .p4__social {
+      border-color: rgba(255, 255, 255, 0.6);
+      color: var(--blanco);
+    }
+
+    @media (max-width: 760px) {
+      .p4__grid { grid-template-columns: minmax(0, 1fr); }
+      .p4__media { max-height: 240px; }
+    }
+
+    /* ===== Prototipo 6 — design-dna + frontend-ui-engineering ===== */
+
+    .p6__actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 380px;
+      margin-top: clamp(28px, 5vh, 44px);
+    }
+    .p6 .b2 { width: 100%; }
+    .p6 .b2:focus-visible { outline-color: var(--hielo); }
+
+    .p6 .p4__layer .p4__grid {
+      background-image:
+        radial-gradient(1.5px 1.5px at 8% 22%, rgba(255, 255, 255, 0.9) 50%, transparent 51%),
+        radial-gradient(1px 1px at 17% 76%, rgba(255, 255, 255, 0.55) 50%, transparent 51%),
+        radial-gradient(2px 2px at 27% 38%, rgba(255, 255, 255, 0.72) 50%, transparent 51%),
+        radial-gradient(1px 1px at 39% 15%, rgba(255, 255, 255, 0.45) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 47% 82%, rgba(255, 255, 255, 0.8) 50%, transparent 51%),
+        radial-gradient(1px 1px at 58% 29%, rgba(255, 255, 255, 0.5) 50%, transparent 51%),
+        radial-gradient(2px 2px at 66% 67%, rgba(255, 255, 255, 0.7) 50%, transparent 51%),
+        radial-gradient(1px 1px at 76% 12%, rgba(255, 255, 255, 0.6) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 84% 48%, rgba(255, 255, 255, 0.85) 50%, transparent 51%),
+        radial-gradient(1px 1px at 94% 84%, rgba(255, 255, 255, 0.48) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 4% 91%, rgba(255, 255, 255, 0.42) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 22% 58%, rgba(255, 255, 255, 0.62) 50%, transparent 51%),
+        radial-gradient(1px 1px at 34% 91%, rgba(255, 255, 255, 0.5) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 54% 53%, rgba(255, 255, 255, 0.72) 50%, transparent 51%),
+        radial-gradient(1px 1px at 71% 91%, rgba(255, 255, 255, 0.55) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 91% 28%, rgba(255, 255, 255, 0.65) 50%, transparent 51%),
+        radial-gradient(1px 1px at 13% 41%, rgba(255, 255, 255, 0.66) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 11% 63%, rgba(255, 255, 255, 0.74) 50%, transparent 51%),
+        radial-gradient(2px 2px at 19% 30%, rgba(255, 255, 255, 0.8) 50%, transparent 51%),
+        radial-gradient(1px 1px at 25% 12%, rgba(255, 255, 255, 0.52) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 31% 64%, rgba(255, 255, 255, 0.68) 50%, transparent 51%),
+        radial-gradient(1px 1px at 36% 36%, rgba(255, 255, 255, 0.58) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 42% 68%, rgba(255, 255, 255, 0.75) 50%, transparent 51%),
+        radial-gradient(2px 2px at 45% 44%, rgba(255, 255, 255, 0.7) 50%, transparent 51%),
+        radial-gradient(1px 1px at 50% 18%, rgba(255, 255, 255, 0.47) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 56% 74%, rgba(255, 255, 255, 0.82) 50%, transparent 51%),
+        radial-gradient(1px 1px at 61% 51%, rgba(255, 255, 255, 0.56) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 64% 87%, rgba(255, 255, 255, 0.6) 50%, transparent 51%),
+        radial-gradient(2px 2px at 69% 24%, rgba(255, 255, 255, 0.78) 50%, transparent 51%),
+        radial-gradient(1px 1px at 73% 55%, rgba(255, 255, 255, 0.5) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 79% 79%, rgba(255, 255, 255, 0.7) 50%, transparent 51%),
+        radial-gradient(1px 1px at 87% 62%, rgba(255, 255, 255, 0.62) 50%, transparent 51%);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .p6 .b2:hover {
+        background: var(--hielo);
+        border-color: var(--hielo);
+        color: var(--burdeos);
+        transform: translateY(-2px);
+      }
+      .p6 .b2--wa:hover {
+        background: var(--hielo);
+        border-color: var(--hielo);
+        color: var(--wa-deep);
+        transform: translateY(-2px);
+      }
+      .p6 .b2.ig:hover,
+      .p6 .b2.fb:hover {
+        filter: brightness(1.18) saturate(1.15);
+        transform: translateY(-2px);
+        box-shadow: 0 0 0 2px var(--blanco), 0 0 18px rgba(255, 255, 255, 0.5);
+      }
+    }
+    .p6 .b2:active { transform: scale(0.97); transition-duration: 100ms; }
+
+    /* ================= Prototipo 5 — apple-design ================= */
+
+    .p5 {
+      background: linear-gradient(180deg, #E7F1F3 0%, #F7FBFC 55%, #FFFFFF 100%);
+      color: var(--ink);
+      --focus: var(--burdeos);
+      overflow: hidden;
+    }
+    .p5::before {
+      content: "";
+      position: absolute;
+      top: -18vmax; right: -14vmax;
+      width: 55vmax; height: 55vmax;
+      background: radial-gradient(circle, rgba(70, 15, 36, 0.10), transparent 65%);
+      pointer-events: none;
+    }
+    .p5::after {
+      content: "";
+      position: absolute;
+      bottom: -22vmax; left: -16vmax;
+      width: 50vmax; height: 50vmax;
+      background: radial-gradient(circle, rgba(207, 228, 233, 0.55), transparent 65%);
+      pointer-events: none;
+    }
+
+    .p5__card {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: min(680px, 100%);
+      padding: clamp(28px, 5vw, 48px);
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 24px 60px rgba(20, 23, 25, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(24px) saturate(1.8);
+      -webkit-backdrop-filter: blur(24px) saturate(1.8);
+      text-align: center;
+    }
+
+    .js .p5__card {
+      opacity: 0;
+      transform: translateY(14px) scale(0.98);
+      backdrop-filter: blur(0px) saturate(100%);
+      -webkit-backdrop-filter: blur(0px) saturate(100%);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out),
+        backdrop-filter 600ms var(--ease-out), -webkit-backdrop-filter 600ms var(--ease-out);
+    }
+    .js .p5[data-visible] .p5__card {
+      opacity: 1;
+      transform: none;
+      backdrop-filter: blur(24px) saturate(1.8);
+      -webkit-backdrop-filter: blur(24px) saturate(1.8);
+    }
+
+    .p5 .eyebrow { color: rgba(70, 15, 36, 0.6); }
+    .p5__title {
+      margin-top: 14px;
+      font-size: clamp(2.1rem, 5vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+    }
+    .p5__text {
+      max-width: 44ch;
+      margin-top: 16px;
+      color: rgba(20, 23, 25, 0.72);
+      font-size: clamp(1rem, 1.6vw, 1.1rem);
+    }
+
+    .p5 .actions { max-width: 420px; }
+
+    .b5 {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      min-height: 52px;
+      padding: 14px 24px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(20, 23, 25, 0.14);
+      border-radius: 999px;
+      color: var(--ink);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 8px 24px rgba(20, 23, 25, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform 300ms var(--ease-out), background-color 200ms ease,
+        box-shadow 300ms ease, border-color 200ms ease;
+    }
+    @media (min-width: 640px) {
+      .b5 { width: auto; }
+    }
+    .b5--wa {
+      background: #0E7C47;
+      border-color: transparent;
+      color: var(--blanco);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 10px 26px rgba(14, 124, 71, 0.32);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .b5:hover {
+        transform: translateY(-2px);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 14px 32px rgba(20, 23, 25, 0.14);
+      }
+      .b5--wa:hover {
+        background: #0B6B3D;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 16px 34px rgba(14, 124, 71, 0.4);
+      }
+    }
+    .b5:active { transform: scale(0.97); transition-duration: 100ms; }
+
+    /* ================= Botones de marca (Instagram / Facebook) ================= */
+
+    .proto .ig {
+      background: var(--ig);
+      border-color: transparent;
+      color: var(--blanco);
+      transition: transform 160ms var(--ease-out), filter 200ms ease,
+        background-color 150ms ease, color 150ms ease, border-color 150ms ease,
+        box-shadow 300ms ease;
+    }
+    .proto .fb {
+      background: var(--fb);
+      border-color: transparent;
+      color: var(--blanco);
+      transition: transform 160ms var(--ease-out), filter 200ms ease,
+        background-color 150ms ease, color 150ms ease, border-color 150ms ease,
+        box-shadow 300ms ease;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .proto .ig:hover,
+      .proto .fb:hover { filter: brightness(1.08); }
+      .proto .ig:hover { background: var(--ig); color: var(--blanco); }
+      .proto .fb:hover { background: var(--fb); color: var(--blanco); }
+    }
+
+    /* ================= Preferencias del sistema ================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .skip-link { transition: none; }
+
+      .js .p1 .reveal { transform: none; transition: opacity 200ms ease; }
+      .p1 .r2, .p1 .r3, .p1 .r4 { transition-delay: 0ms; }
+      .b1, .b2, .b3, .b5, .p4__wa, .p4__social { transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease; }
+      .proto .ig, .proto .fb { transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease; }
+      .b1:active, .b2:active, .b3:active, .b5:active, .p4__wa:active, .p4__social:active { transform: none; }
+      .b1:hover, .b3:hover, .b5:hover, .p4__wa:hover, .p4__social:hover { transform: none; }
+      .p6 .b2:hover, .p6 .b2:active, .p6 .b2.ig:hover, .p6 .b2.fb:hover, .p6 .b2.ig:active, .p6 .b2.fb:active { transform: none; }
+
+      .js .p5__card {
+        transform: none;
+        backdrop-filter: blur(24px) saturate(1.8);
+        -webkit-backdrop-filter: blur(24px) saturate(1.8);
+        transition: opacity 200ms ease;
+      }
+    }
+
+    @media (prefers-reduced-transparency: reduce) {
+      .picker { background: #101012; backdrop-filter: none; -webkit-backdrop-filter: none; }
+      .p5__card { background: #FFFFFF; backdrop-filter: none; -webkit-backdrop-filter: none; }
+      .b5 { background: #FFFFFF; }
+      .b5--wa { background: #0E7C47; }
+      .proto__badge { backdrop-filter: none; -webkit-backdrop-filter: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#p1">Saltar al primer prototipo</a>
+
+  <svg style="display: none;" aria-hidden="true">
+    <symbol id="i-wa" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M20.52 3.48A11.82 11.82 0 0 0 12.08 0C5.55 0 .24 5.31.24 11.84c0 2.09.55 4.13 1.59 5.93L.14 24l6.38-1.67a11.84 11.84 0 0 0 5.56 1.41h.01c6.52 0 11.83-5.31 11.83-11.84 0-3.16-1.23-6.13-3.4-8.42ZM12.09 21.7h-.01a9.85 9.85 0 0 1-5.02-1.38l-.36-.21-3.79.99 1.01-3.7-.23-.38a9.84 9.84 0 0 1-1.51-5.18C2.18 6.4 6.62 1.96 12.08 1.96c2.64 0 5.12 1.03 6.98 2.89a9.82 9.82 0 0 1 2.88 6.99c0 5.46-4.44 9.9-9.85 9.9Zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.2-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/>
+    </symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="17.4" cy="6.7" r="1" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M13.7 21v-8h2.7l.4-3.1h-3.1V8c0-.9.3-1.5 1.6-1.5h1.7V3.7c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.2H8v3.1h2.6v8h3.1Z"/>
+    </symbol>
+  </svg>
+
+  <header class="page-head">
+    <h1>Prototipos de contacto</h1>
+    <p>Cinco propuestas para la misma sección: misma marca, mismos tres canales, distinto tratamiento. Recorre y elige.</p>
+  </header>
+
+  <nav class="picker" aria-label="Prototipos de contacto">
+    <a href="#p1" aria-current="true">1 · animate</a>
+    <a href="#p2">2 · UI engineering</a>
+    <a href="#p3">3 · Emil</a>
+    <a href="#p4">4 · Design DNA</a>
+    <a href="#p5">5 · Apple</a>
+    <a href="#p6">6 · DNA + UI</a>
+  </nav>
+
+  <main>
+    <!-- ===================== Prototipo 1 · animate ===================== -->
+    <section id="p1" class="proto p1" aria-labelledby="p1-title">
+      <p class="proto__badge">Prototipo 1 · animate</p>
+      <div class="inner">
+        <p class="eyebrow reveal r1">Eben Arquitectura y Construcción</p>
+        <h2 id="p1-title" class="p1__title reveal r2">Contáctenos</h2>
+        <p class="p1__text reveal r3">Materialicemos tu proyecto con orden.</p>
+        <div class="actions reveal r4">
+          <a class="b1 b1--wa" href="https://wa.me/message/V4RNR4JTJ7QEE1?text=Hola%20Eben%2C%20quiero%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true"><use href="#i-wa"></use></svg>
+            <span>Escríbenos por WhatsApp</span>
+          </a>
+          <a class="b1 ig" href="https://www.instagram.com/espacios.eben/" target="_blank" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true"><use href="#i-ig"></use></svg>
+            <span>Síguenos en Instagram</span>
+          </a>
+          <a class="b1 fb" href="https://www.facebook.com/profile.php?id=61594440430104" target="_blank" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true"><use href="#i-fb"></use></svg>
+            <span>Síguenos en Facebook</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Prototipo 2 · frontend-ui-engineering ===================== -->
+    <section id="p2" class="proto p2" aria-labelledby="p2-title">
+      <p class="proto__badge">Prototipo 2 · frontend-ui-engineering</p>
+      <div class="inner">
+        <p class="eyebrow">Eben Arquitectura y Construcción</p>
+        <h2 id="p2-title" class="p2__title">Contáctenos</h2>
+        <p class="p2__text">Materialicemos tu proyecto con orden.</p>
+        <ul class="p2__actions" aria-label="Canales de contacto">
+          <li>
+            <a class="b2 b2--wa" href="https://wa.me/message/V4RNR4JTJ7QEE1?text=Hola%20Eben%2C%20quiero%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer">
+              <svg class="icon" aria-hidden="true"><use href="#i-wa"></use></svg>
+              <span>Escríbenos por WhatsApp</span>
+            </a>
+          </li>
+          <li>
+            <a class="b2 ig" href="https://www.instagram.com/espacios.eben/" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" aria-hidden="true"><use href="#i-ig"></use></svg>
+              <span>Síguenos en Instagram</span>
+            </a>
+          </li>
+          <li>
+            <a class="b2 fb" href="https://www.facebook.com/profile.php?id=61594440430104" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" aria-hidden="true"><use href="#i-fb"></use></svg>
+              <span>Síguenos en Facebook</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== Prototipo 3 · emil-design-eng ===================== -->
+    <section id="p3" class="proto p3" aria-labelledby="p3-title">
+      <p class="proto__badge">Prototipo 3 · emil-design-eng</p>
+      <div class="inner">
+        <p class="eyebrow">Eben Arquitectura y Construcción</p>
+        <h2 id="p3-title" class="p3__title">Contáctenos</h2>
+        <p class="p3__text">Materialicemos tu proyecto con orden.</p>
+        <div class="actions">
+          <a class="b3 b3--wa" href="https://wa.me/message/V4RNR4JTJ7QEE1?text=Hola%20Eben%2C%20quiero%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true"><use href="#i-wa"></use></svg>
+            <span>Escríbenos por WhatsApp</span>
+          </a>
+          <a class="b3 ig" href="https://www.instagram.com/espacios.eben/" target="_blank" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true"><use href="#i-ig"></use></svg>
+            <span>Síguenos en Instagram</span>
+          </a>
+          <a class="b3 fb" href="https://www.facebook.com/profile.php?id=61594440430104" target="_blank" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true"><use href="#i-fb"></use></svg>
+            <span>Síguenos en Facebook</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Prototipo 4 · design-dna ===================== -->
+    <section id="p4" class="proto p4" aria-labelledby="p4-title" data-xray>
+      <p class="proto__badge">Prototipo 4 · design-dna</p>
+
+      <div class="p4__card p4__card--base">
+        <div class="p4__grid">
+          <div class="p4__media">
+            <img src="img/renders/optimized/local-comercial.jpg" alt="Local comercial terminado" loading="lazy" decoding="async">
+          </div>
+          <div class="p4__content">
+            <p class="p4__eyebrow" aria-hidden="true"></p>
+            <h2 id="p4-title" class="p4__title">Contáctenos</h2>
+            <p class="p4__text">Materialicemos tu proyecto con orden.</p>
+            <a class="p4__wa" href="https://wa.me/message/V4RNR4JTJ7QEE1?text=Hola%20Eben%2C%20quiero%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer">
+              <svg class="icon" aria-hidden="true"><use href="#i-wa"></use></svg>
+              <span>Escríbenos por WhatsApp</span>
+            </a>
+            <div class="p4__socials">
+              <a class="p4__social ig" href="https://www.instagram.com/espacios.eben/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Eben">
+                <svg class="icon" aria-hidden="true"><use href="#i-ig"></use></svg>
+              </a>
+              <a class="p4__social fb" href="https://www.facebook.com/profile.php?id=61594440430104" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Eben">
+                <svg class="icon" aria-hidden="true"><use href="#i-fb"></use></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p4__layer" aria-hidden="true">
+        <div class="p4__card">
+          <div class="p4__grid">
+            <div class="p4__media">
+              <img src="img/renders/optimized/local-gris.jpg" alt="" loading="lazy" decoding="async">
+            </div>
+            <div class="p4__content">
+              <p class="p4__eyebrow"></p>
+              <h2 class="p4__title">Llámanos</h2>
+              <p class="p4__text">Materialicemos con orden.</p>
+              <a class="p4__wa" href="https://wa.me/message/V4RNR4JTJ7QEE1?text=Hola%20Eben%2C%20quiero%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer" tabindex="-1">
+                <svg class="icon" aria-hidden="true"><use href="#i-wa"></use></svg>
+                <span>Contáctenos por WhatsApp</span>
+              </a>
+              <div class="p4__socials">
+                <a class="p4__social ig" href="https://www.instagram.com/espacios.eben/" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                  <svg class="icon" aria-hidden="true"><use href="#i-ig"></use></svg>
+                </a>
+                <a class="p4__social fb" href="https://www.facebook.com/profile.php?id=61594440430104" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                  <svg class="icon" aria-hidden="true"><use href="#i-fb"></use></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Prototipo 5 · apple-design ===================== -->
+    <section id="p5" class="proto p5" aria-labelledby="p5-title">
+      <p class="proto__badge">Prototipo 5 · apple-design</p>
+      <div class="p5__card">
+        <p class="eyebrow">Eben Arquitectura y Construcción</p>
+        <h2 id="p5-title" class="p5__title">Contáctenos</h2>
+        <p class="p5__text">Materialicemos tu proyecto con orden.</p>
+        <div class="actions">
+          <a class="b5 b5--wa" href="https://wa.me/message/V4RNR4JTJ7QEE1?text=Hola%20Eben%2C%20quiero%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true"><use href="#i-wa"></use></svg>
+            <span>Escríbenos por WhatsApp</span>
+          </a>
+          <a class="b5 ig" href="https://www.instagram.com/espacios.eben/" target="_blank" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true"><use href="#i-ig"></use></svg>
+            <span>Síguenos en Instagram</span>
+          </a>
+          <a class="b5 fb" href="https://www.facebook.com/profile.php?id=61594440430104" target="_blank" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true"><use href="#i-fb"></use></svg>
+            <span>Síguenos en Facebook</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Prototipo 6 · design-dna + frontend-ui-engineering ===================== -->
+    <section id="p6" class="proto p4 p6" aria-labelledby="p6-title" data-xray>
+      <p class="proto__badge">Prototipo 6 · DNA + UI engineering</p>
+
+      <div class="p4__card p4__card--base">
+        <div class="p4__grid">
+          <div class="p4__media">
+            <img src="img/renders/optimized/local-comercial.jpg" alt="Local comercial terminado" loading="lazy" decoding="async">
+          </div>
+          <div class="p4__content">
+            <p class="p4__eyebrow" aria-hidden="true"></p>
+            <h2 id="p6-title" class="p4__title">Contáctenos</h2>
+            <p class="p4__text">Materialicemos tu proyecto con orden.</p>
+            <div class="p6__actions">
+              <a class="b2 b2--wa" href="https://wa.me/message/V4RNR4JTJ7QEE1?text=Hola%20Eben%2C%20quiero%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer">
+                <svg class="icon" aria-hidden="true"><use href="#i-wa"></use></svg>
+                <span>Escríbenos por WhatsApp</span>
+              </a>
+              <a class="b2 ig" href="https://www.instagram.com/espacios.eben/" target="_blank" rel="noopener noreferrer">
+                <svg class="icon" aria-hidden="true"><use href="#i-ig"></use></svg>
+                <span>Síguenos en Instagram</span>
+              </a>
+              <a class="b2 fb" href="https://www.facebook.com/profile.php?id=61594440430104" target="_blank" rel="noopener noreferrer">
+                <svg class="icon" aria-hidden="true"><use href="#i-fb"></use></svg>
+                <span>Síguenos en Facebook</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p4__layer" aria-hidden="true">
+        <div class="p4__card">
+          <div class="p4__grid">
+            <div class="p4__media">
+              <img src="img/renders/optimized/local-gris.jpg" alt="" loading="lazy" decoding="async">
+            </div>
+            <div class="p4__content">
+              <p class="p4__eyebrow"></p>
+              <h2 class="p4__title">Llámanos</h2>
+              <p class="p4__text">Materialicemos con orden.</p>
+              <div class="p6__actions">
+                <a class="b2 b2--wa" href="https://wa.me/message/V4RNR4JTJ7QEE1?text=Hola%20Eben%2C%20quiero%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer" tabindex="-1">
+                  <svg class="icon" aria-hidden="true"><use href="#i-wa"></use></svg>
+                  <span>Contáctenos por WhatsApp</span>
+                </a>
+                <a class="b2 ig" href="https://www.instagram.com/espacios.eben/" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                  <svg class="icon" aria-hidden="true"><use href="#i-ig"></use></svg>
+                  <span>Síguenos en Instagram</span>
+                </a>
+                <a class="b2 fb" href="https://www.facebook.com/profile.php?id=61594440430104" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                  <svg class="icon" aria-hidden="true"><use href="#i-fb"></use></svg>
+                  <span>Síguenos en Facebook</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var sections = Array.prototype.slice.call(document.querySelectorAll("main > section[id]"));
+      var links = {};
+      Array.prototype.forEach.call(document.querySelectorAll('.picker a[href^="#"]'), function (a) {
+        links[a.getAttribute("href").slice(1)] = a;
+      });
+
+      if (!("IntersectionObserver" in window)) {
+        sections.forEach(function (s) { s.setAttribute("data-visible", ""); });
+        return;
+      }
+
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          Object.keys(links).forEach(function (k) { links[k].removeAttribute("aria-current"); });
+          if (links[e.target.id]) links[e.target.id].setAttribute("aria-current", "true");
+        });
+      }, { rootMargin: "-40% 0px -55% 0px" });
+      sections.forEach(function (s) { spy.observe(s); });
+
+      function reveal(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        var io = new IntersectionObserver(function (es, obs) {
+          es.forEach(function (e) {
+            if (e.isIntersecting) {
+              el.setAttribute("data-visible", "");
+              obs.disconnect();
+            }
+          });
+        }, { threshold: 0.25 });
+        io.observe(el);
+      }
+      reveal("p1");
+      reveal("p5");
+
+      function attachXray(section) {
+        var layer = section.querySelector(".p4__layer");
+        if (!section || !layer || reduce) return;
+
+        var tx = -400, ty = -400, tr = 0, cx = -400, cy = -400, cr = 0, raf = 0;
+
+        function radius() {
+          var r = section.getBoundingClientRect();
+          return Math.min(240, Math.max(160, Math.min(r.width, r.height) * 0.38));
+        }
+        function apply() {
+          layer.style.setProperty("--xray-x", cx + "px");
+          layer.style.setProperty("--xray-y", cy + "px");
+          layer.style.setProperty("--xray-r", cr + "px");
+        }
+        function frame() {
+          cx += (tx - cx) * 0.18;
+          cy += (ty - cy) * 0.18;
+          cr += (tr - cr) * 0.18;
+          apply();
+          if (Math.abs(tx - cx) > 0.5 || Math.abs(ty - cy) > 0.5 || Math.abs(tr - cr) > 0.5) {
+            raf = requestAnimationFrame(frame);
+          } else {
+            raf = 0;
+          }
+        }
+        function kick() { if (!raf) raf = requestAnimationFrame(frame); }
+        function hide() { tr = 0; kick(); }
+
+        section.addEventListener("pointermove", function (e) {
+          var r = section.getBoundingClientRect();
+          tx = e.clientX - r.left;
+          ty = e.clientY - r.top;
+          tr = radius();
+          kick();
+        });
+        section.addEventListener("pointerleave", hide);
+        section.addEventListener("pointerup", hide);
+        section.addEventListener("pointercancel", hide);
+      }
+
+      Array.prototype.forEach.call(document.querySelectorAll("[data-xray]"), attachXray);
+    })();
+  </script>
+</body>
+</html>

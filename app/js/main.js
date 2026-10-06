@@ -233,6 +233,7 @@ class PhotoCarousel {
     if (!pool) return;
 
     const label = this.root.dataset.renderLabel || "Render";
+    const folder = RENDER_FOLDERS[this.root.dataset.renderPool];
     const slides = document.createDocumentFragment();
 
     pool.forEach((id, index) => {
@@ -241,10 +242,13 @@ class PhotoCarousel {
       img.alt = `${label} ${index + 1} de ${pool.length}`;
       img.loading = "lazy";
       img.decoding = "async";
+      const path = folder
+        ? `img/renders/optimized/${folder}/${id}.jpg`
+        : `img/renders/optimized/${this.root.dataset.renderPool}${id}.jpg`;
       if (index === 0) {
-        img.src = `img/renders/optimized/${this.root.dataset.renderPool}${id}.jpg`;
+        img.src = path;
       } else {
-        img.dataset.src = `img/renders/optimized/${this.root.dataset.renderPool}${id}.jpg`;
+        img.dataset.src = path;
       }
       slides.append(img);
     });
@@ -339,7 +343,7 @@ class XrayHover {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     this.root = root;
-    this.layer = root.querySelector(".cta__layer");
+    this.layer = root.querySelector(".p4__layer, .cta__layer");
     this.pointer = { x: -300, y: -300 };
     this.current = { x: -300, y: -300, radius: 0 };
     this.target = { x: -300, y: -300, radius: 0 };
@@ -434,10 +438,19 @@ class XrayHover {
   }
 }
 
+const RENDER_FOLDERS = {
+  "r-new": "Residencial",
+  "e-new": "Empresarial",
+  "c-new": "Comercial"
+};
+
 const RENDER_POOLS = {
   r: [1, 2, 3, 5, 6, 7],
   c: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
-  e: [1, 2, 3, 4, 5, 6, 7, 8]
+  e: [1, 2, 3, 4, 5, 6, 7, 8],
+  "r-new": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  "e-new": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  "c-new": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 };
 
 document.addEventListener("DOMContentLoaded", () => {

@@ -260,9 +260,284 @@
         padding-top: 0;
       }
     }
+    /* ---------- Contacto: seccion X-ray (DNA + frontend-ui-engineering) ---------- */
+
+    :root {
+      --ink: #141719;
+      --wa-dark: #075E54;
+      --wa-deep: #0B4D33;
+      --ig: linear-gradient(45deg, #F58529 0%, #DD2A7B 50%, #8134AF 100%);
+      --fb: #1877F2;
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .proto {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 92vh;
+      min-height: 92dvh;
+      padding: clamp(72px, 11vh, 120px) clamp(20px, 6vw, 80px);
+    }
+
+    .icon { width: 18px; height: 18px; flex: none; }
+
+    .p4 {
+      background: var(--color-hielo);
+      color: var(--color-negro);
+      text-align: center;
+      padding-top: clamp(88px, 14vh, 144px);
+      padding-bottom: clamp(88px, 14vh, 144px);
+      overflow: hidden;
+    }
+
+    .p4__card {
+      position: relative;
+      width: min(1150px, 100%);
+      padding: clamp(24px, 4vw, 48px);
+      border: 1px solid rgba(70, 15, 36, 0.1);
+      background: transparent;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.16);
+    }
+    .p4__card--base {
+      border-color: rgba(20, 23, 25, 0.3);
+      background: var(--ink);
+      box-shadow: 0 22px 56px rgba(20, 23, 25, 0.24);
+    }
+
+    .p4__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+      align-items: center;
+      gap: clamp(32px, 5vw, 72px);
+      width: min(1150px, 100%);
+      margin: 0 auto;
+    }
+
+    .p4__media {
+      position: relative;
+      aspect-ratio: 3 / 2;
+      overflow: hidden;
+    }
+    .p4__media img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .p4__content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .p4__eyebrow {
+      margin-bottom: clamp(14px, 2vh, 22px);
+      color: var(--color-hielo);
+      font-size: 0.72rem;
+    }
+    .p4__eyebrow::before {
+      content: "";
+      display: block;
+      width: clamp(32px, 4vw, 52px);
+      height: 1px;
+      margin-bottom: 8px;
+      background: var(--color-hielo);
+    }
+
+    .p4__title {
+      font-size: clamp(1.75rem, 4.5vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: 0.18em;
+      text-indent: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-blanco);
+    }
+    .p4__text {
+      max-width: 520px;
+      margin-top: clamp(16px, 3vh, 24px);
+      color: var(--color-hielo);
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      letter-spacing: 0.04em;
+    }
+
+    .p4__layer {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: inherit;
+      overflow: hidden;
+      background: var(--color-negro);
+      clip-path: circle(var(--xray-radius, 0px) at var(--xray-x, -300px) var(--xray-y, -300px));
+      will-change: clip-path;
+    }
+    .p4__layer .p4__card {
+      border-color: transparent;
+      background: transparent;
+      box-shadow: none;
+    }
+    .p4__layer .p4__title { color: var(--color-blanco); }
+    .p4__layer .p4__text { color: var(--color-hielo); }
+
+    @media (max-width: 760px) {
+      .p4__grid { grid-template-columns: minmax(0, 1fr); }
+      .p4__media { max-height: 240px; }
+    }
+
+    .p6__actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 380px;
+      margin-top: clamp(28px, 5vh, 44px);
+    }
+    .p6 .b2:focus-visible { outline-color: var(--color-hielo); }
+
+    .p6 .p4__layer .p4__grid {
+      background-image:
+        radial-gradient(1.5px 1.5px at 8% 22%, rgba(255, 255, 255, 0.9) 50%, transparent 51%),
+        radial-gradient(1px 1px at 17% 76%, rgba(255, 255, 255, 0.55) 50%, transparent 51%),
+        radial-gradient(2px 2px at 27% 38%, rgba(255, 255, 255, 0.72) 50%, transparent 51%),
+        radial-gradient(1px 1px at 39% 15%, rgba(255, 255, 255, 0.45) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 47% 82%, rgba(255, 255, 255, 0.8) 50%, transparent 51%),
+        radial-gradient(1px 1px at 58% 29%, rgba(255, 255, 255, 0.5) 50%, transparent 51%),
+        radial-gradient(2px 2px at 66% 67%, rgba(255, 255, 255, 0.7) 50%, transparent 51%),
+        radial-gradient(1px 1px at 76% 12%, rgba(255, 255, 255, 0.6) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 84% 48%, rgba(255, 255, 255, 0.85) 50%, transparent 51%),
+        radial-gradient(1px 1px at 94% 84%, rgba(255, 255, 255, 0.48) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 4% 91%, rgba(255, 255, 255, 0.42) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 22% 58%, rgba(255, 255, 255, 0.62) 50%, transparent 51%),
+        radial-gradient(1px 1px at 34% 91%, rgba(255, 255, 255, 0.5) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 54% 53%, rgba(255, 255, 255, 0.72) 50%, transparent 51%),
+        radial-gradient(1px 1px at 71% 91%, rgba(255, 255, 255, 0.55) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 91% 28%, rgba(255, 255, 255, 0.65) 50%, transparent 51%),
+        radial-gradient(1px 1px at 13% 41%, rgba(255, 255, 255, 0.66) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 11% 63%, rgba(255, 255, 255, 0.74) 50%, transparent 51%),
+        radial-gradient(2px 2px at 19% 30%, rgba(255, 255, 255, 0.8) 50%, transparent 51%),
+        radial-gradient(1px 1px at 25% 12%, rgba(255, 255, 255, 0.52) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 31% 64%, rgba(255, 255, 255, 0.68) 50%, transparent 51%),
+        radial-gradient(1px 1px at 36% 36%, rgba(255, 255, 255, 0.58) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 42% 68%, rgba(255, 255, 255, 0.75) 50%, transparent 51%),
+        radial-gradient(2px 2px at 45% 44%, rgba(255, 255, 255, 0.7) 50%, transparent 51%),
+        radial-gradient(1px 1px at 50% 18%, rgba(255, 255, 255, 0.47) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 56% 74%, rgba(255, 255, 255, 0.82) 50%, transparent 51%),
+        radial-gradient(1px 1px at 61% 51%, rgba(255, 255, 255, 0.56) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 64% 87%, rgba(255, 255, 255, 0.6) 50%, transparent 51%),
+        radial-gradient(2px 2px at 69% 24%, rgba(255, 255, 255, 0.78) 50%, transparent 51%),
+        radial-gradient(1px 1px at 73% 55%, rgba(255, 255, 255, 0.5) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 79% 79%, rgba(255, 255, 255, 0.7) 50%, transparent 51%),
+        radial-gradient(1px 1px at 87% 62%, rgba(255, 255, 255, 0.62) 50%, transparent 51%);
+    }
+
+    .b2 {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 22px;
+      background: var(--color-blanco);
+      border: 2px solid var(--color-burdeos);
+      color: var(--color-burdeos);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      transition: background-color 150ms ease, color 150ms ease,
+        border-color 150ms ease, transform 150ms var(--ease-out);
+    }
+    .b2--wa {
+      background: var(--wa-dark);
+      border-color: var(--wa-dark);
+      color: var(--color-blanco);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .b2:hover { background: var(--color-burdeos); color: var(--color-blanco); }
+      .b2--wa:hover { background: #054A44; border-color: #054A44; color: var(--color-blanco); }
+    }
+    .b2:active { transform: scale(0.97); transition-duration: 100ms; }
+    .b2:focus-visible { outline: 3px solid var(--color-burdeos); outline-offset: 2px; }
+    .b2--wa:focus-visible { outline-color: var(--wa-dark); }
+
+    @media (hover: hover) and (pointer: fine) {
+      .p6 .b2:hover {
+        background: var(--color-hielo);
+        border-color: var(--color-hielo);
+        color: var(--color-burdeos);
+        transform: translateY(-2px);
+      }
+      .p6 .b2--wa:hover {
+        background: var(--color-hielo);
+        border-color: var(--color-hielo);
+        color: var(--wa-deep);
+        transform: translateY(-2px);
+      }
+      .p6 .b2.ig:hover,
+      .p6 .b2.fb:hover {
+        filter: brightness(1.18) saturate(1.15);
+        transform: translateY(-2px);
+        box-shadow: 0 0 0 2px var(--color-blanco), 0 0 18px rgba(255, 255, 255, 0.5);
+      }
+    }
+    .p6 .b2:active { transform: scale(0.97); transition-duration: 100ms; }
+
+    .proto .ig {
+      background: var(--ig);
+      border-color: transparent;
+      color: var(--color-blanco);
+      transition: transform 160ms var(--ease-out), filter 200ms ease,
+        background-color 150ms ease, color 150ms ease, border-color 150ms ease,
+        box-shadow 300ms ease;
+    }
+    .proto .fb {
+      background: var(--fb);
+      border-color: transparent;
+      color: var(--color-blanco);
+      transition: transform 160ms var(--ease-out), filter 200ms ease,
+        background-color 150ms ease, color 150ms ease, border-color 150ms ease,
+        box-shadow 300ms ease;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .proto .ig:hover,
+      .proto .fb:hover { filter: brightness(1.08); }
+      .proto .ig:hover { background: var(--ig); color: var(--color-blanco); }
+      .proto .fb:hover { background: var(--fb); color: var(--color-blanco); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .b2, .proto .ig, .proto .fb { transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease; }
+      .b2:active { transform: none; }
+      .p6 .b2:hover, .p6 .b2:active, .p6 .b2.ig:hover, .p6 .b2.fb:hover, .p6 .b2.ig:active, .p6 .b2.fb:active { transform: none; }
+    }
   </style>
 </head>
 <body class="proposal-editorial">
+
+  <svg style="display: none;" aria-hidden="true">
+    <symbol id="i-wa" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M20.52 3.48A11.82 11.82 0 0 0 12.08 0C5.55 0 .24 5.31.24 11.84c0 2.09.55 4.13 1.59 5.93L.14 24l6.38-1.67a11.84 11.84 0 0 0 5.56 1.41h.01c6.52 0 11.83-5.31 11.83-11.84 0-3.16-1.23-6.13-3.4-8.42ZM12.09 21.7h-.01a9.85 9.85 0 0 1-5.02-1.38l-.36-.21-3.79.99 1.01-3.7-.23-.38a9.84 9.84 0 0 1-1.51-5.18C2.18 6.4 6.62 1.96 12.08 1.96c2.64 0 5.12 1.03 6.98 2.89a9.82 9.82 0 0 1 2.88 6.99c0 5.46-4.44 9.9-9.85 9.9Zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.2-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/>
+    </symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="17.4" cy="6.7" r="1" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M13.7 21v-8h2.7l.4-3.1h-3.1V8c0-.9.3-1.5 1.6-1.5h1.7V3.7c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.2H8v3.1h2.6v8h3.1Z"/>
+    </symbol>
+  </svg>
+
 
   <header class="site-header">
     <img
@@ -356,7 +631,7 @@
       <article class="service">
         <div class="service__panel service__panel--residencial">
           <div class="service__media">
-            <div class="photos service__carousel" data-photos data-render-pool="r" data-render-label="Render residencial" aria-label="Galería de renders residenciales">
+            <div class="photos service__carousel" data-photos data-render-pool="r-new" data-render-label="Render residencial" aria-label="Galería de renders residenciales">
               <span class="photos__counter" aria-live="polite"></span>
               <button class="photos__arrow photos__arrow--prev" type="button" aria-label="Render residencial anterior">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
@@ -384,7 +659,7 @@
       <article class="service">
         <div class="service__panel service__panel--empresarial">
           <div class="service__media">
-            <div class="photos service__carousel" data-photos data-render-pool="e" data-render-label="Render empresarial" aria-label="Galería de renders empresariales">
+            <div class="photos service__carousel" data-photos data-render-pool="e-new" data-render-label="Render empresarial" aria-label="Galería de renders empresariales">
               <span class="photos__counter" aria-live="polite"></span>
               <button class="photos__arrow photos__arrow--prev" type="button" aria-label="Render empresarial anterior">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
@@ -413,7 +688,7 @@
       <article class="service">
         <div class="service__panel service__panel--comercial">
           <div class="service__media">
-            <div class="photos service__carousel" data-photos data-render-pool="c" data-render-label="Render comercial" aria-label="Galería de renders comerciales">
+            <div class="photos service__carousel" data-photos data-render-pool="c-new" data-render-label="Render comercial" aria-label="Galería de renders comerciales">
               <span class="photos__counter" aria-live="polite"></span>
               <button class="photos__arrow photos__arrow--prev" type="button" aria-label="Render comercial anterior">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
@@ -514,7 +789,7 @@
     </section>
 
     <div class="band" aria-hidden="true">
-      <img class="band__img" src="img/renders/optimized/r7.jpg" alt="" loading="lazy" decoding="async">
+      <img class="band__img" src="img/renders/optimized/Empresarial/3.jpg" alt="" loading="lazy" decoding="async">
     </div>
 
     <section class="faq" id="preguntas" aria-labelledby="faq-title">
@@ -563,74 +838,62 @@
       </div>
     </section>
 
-    <section class="cta" id="contacto" aria-labelledby="contacto-title" data-xray>
-      <div class="cta__card cta__card--base">
-        <div class="cta__grid">
-          <div class="cta__media">
+        <section class="proto p4 p6" id="contacto" aria-labelledby="contacto-title" data-xray>
+      <div class="p4__card p4__card--base">
+        <div class="p4__grid">
+          <div class="p4__media">
             <img src="img/renders/optimized/local-comercial.jpg" alt="Local comercial terminado" loading="lazy" decoding="async">
           </div>
-          <div class="cta__content">
-            <p class="works__eyebrow cta__eyebrow" aria-hidden="true"></p>
-            <h2 class="cta__title" id="contacto-title">Contáctenos</h2>
-            <p class="cta__text">Materialicemos tu proyecto con orden.</p>
-            <a class="cta__whatsapp" href="https://wa.me/message/V4RNR4JTJ7QEE1?text=Hola%20Eben%2C%20quiero%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer">
-              <svg class="cta__whatsapp-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path fill="currentColor" d="M20.52 3.48A11.82 11.82 0 0 0 12.08 0C5.55 0 .24 5.31.24 11.84c0 2.09.55 4.13 1.59 5.93L.14 24l6.38-1.67a11.84 11.84 0 0 0 5.56 1.41h.01c6.52 0 11.83-5.31 11.83-11.84 0-3.16-1.23-6.13-3.4-8.42ZM12.09 21.7h-.01a9.85 9.85 0 0 1-5.02-1.38l-.36-.21-3.79.99 1.01-3.7-.23-.38a9.84 9.84 0 0 1-1.51-5.18C2.18 6.4 6.62 1.96 12.08 1.96c2.64 0 5.12 1.03 6.98 2.89a9.82 9.82 0 0 1 2.88 6.99c0 5.46-4.44 9.9-9.85 9.9Zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.2-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/>
-              </svg>
-              <span>Contáctenos por WhatsApp</span>
-            </a>
-            <div class="cta__socials" aria-label="Redes sociales">
-              <a class="cta__social" href="https://www.instagram.com/espacios.eben/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Eben">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
-                  <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
-                  <circle cx="17.4" cy="6.7" r="1" fill="currentColor"/>
-                </svg>
+          <div class="p4__content">
+            <p class="p4__eyebrow" aria-hidden="true"></p>
+            <h2 id="contacto-title" class="p4__title">Contáctenos</h2>
+            <p class="p4__text">Materialicemos tu proyecto con orden.</p>
+            <div class="p6__actions">
+              <a class="b2 b2--wa" href="https://wa.me/message/V4RNR4JTJ7QEE1?text=Hola%20Eben%2C%20quiero%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer">
+                <svg class="icon" aria-hidden="true"><use href="#i-wa"></use></svg>
+                <span>Escríbenos por WhatsApp</span>
               </a>
-              <a class="cta__social" href="https://www.facebook.com/profile.php?id=61594440430104" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Eben">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill="currentColor" d="M13.7 21v-8h2.7l.4-3.1h-3.1V8c0-.9.3-1.5 1.6-1.5h1.7V3.7c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.2H8v3.1h2.6v8h3.1Z"/>
-                </svg>
+              <a class="b2 ig" href="https://www.instagram.com/espacios.eben/" target="_blank" rel="noopener noreferrer">
+                <svg class="icon" aria-hidden="true"><use href="#i-ig"></use></svg>
+                <span>Síguenos en Instagram</span>
+              </a>
+              <a class="b2 fb" href="https://www.facebook.com/profile.php?id=61594440430104" target="_blank" rel="noopener noreferrer">
+                <svg class="icon" aria-hidden="true"><use href="#i-fb"></use></svg>
+                <span>Síguenos en Facebook</span>
               </a>
             </div>
           </div>
         </div>
       </div>
 
-        <div class="cta__layer" aria-hidden="true">
-          <div class="cta__card cta__card--xray">
-            <div class="cta__grid">
-            <div class="cta__media">
+      <div class="p4__layer" aria-hidden="true">
+        <div class="p4__card">
+          <div class="p4__grid">
+            <div class="p4__media">
               <img src="img/renders/optimized/local-gris.jpg" alt="" loading="lazy" decoding="async">
             </div>
-            <div class="cta__content">
-              <p class="works__eyebrow cta__eyebrow" aria-hidden="true"></p>
-              <h2 class="cta__title">LLÁMANOS</h2>
-              <p class="cta__text">Materialicemos con orden.</p>
-              <span class="cta__whatsapp">
-                <svg class="cta__whatsapp-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path fill="currentColor" d="M20.52 3.48A11.82 11.82 0 0 0 12.08 0C5.55 0 .24 5.31.24 11.84c0 2.09.55 4.13 1.59 5.93L.14 24l6.38-1.67a11.84 11.84 0 0 0 5.56 1.41h.01c6.52 0 11.83-5.31 11.83-11.84 0-3.16-1.23-6.13-3.4-8.42ZM12.09 21.7h-.01a9.85 9.85 0 0 1-5.02-1.38l-.36-.21-3.79.99 1.01-3.7-.23-.38a9.84 9.84 0 0 1-1.51-5.18C2.18 6.4 6.62 1.96 12.08 1.96c2.64 0 5.12 1.03 6.98 2.89a9.82 9.82 0 0 1 2.88 6.99c0 5.46-4.44 9.9-9.85 9.9Zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.67-2.08-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.2-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/>
-                </svg>
-                <span>Contáctenos por WhatsApp</span>
-              </span>
-              <div class="cta__socials" aria-label="Redes sociales">
-                <span class="cta__social" aria-label="Instagram de Eben">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
-                    <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
-                    <circle cx="17.4" cy="6.7" r="1" fill="currentColor"/>
-                  </svg>
-                </span>
-                <span class="cta__social" aria-label="Facebook de Eben">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path fill="currentColor" d="M13.7 21v-8h2.7l.4-3.1h-3.1V8c0-.9.3-1.5 1.6-1.5h1.7V3.7c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.2H8v3.1h2.6v8h3.1Z"/>
-                  </svg>
-                </span>
+            <div class="p4__content">
+              <p class="p4__eyebrow"></p>
+              <h2 class="p4__title">Llámanos</h2>
+              <p class="p4__text">Materialicemos con orden.</p>
+              <div class="p6__actions">
+                <a class="b2 b2--wa" href="https://wa.me/message/V4RNR4JTJ7QEE1?text=Hola%20Eben%2C%20quiero%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer" tabindex="-1">
+                  <svg class="icon" aria-hidden="true"><use href="#i-wa"></use></svg>
+                  <span>Contáctenos por WhatsApp</span>
+                </a>
+                <a class="b2 ig" href="https://www.instagram.com/espacios.eben/" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                  <svg class="icon" aria-hidden="true"><use href="#i-ig"></use></svg>
+                  <span>Síguenos en Instagram</span>
+                </a>
+                <a class="b2 fb" href="https://www.facebook.com/profile.php?id=61594440430104" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                  <svg class="icon" aria-hidden="true"><use href="#i-fb"></use></svg>
+                  <span>Síguenos en Facebook</span>
+                </a>
               </div>
-            </div>
             </div>
           </div>
         </div>
+      </div>
     </section>
   </main>
 
@@ -640,7 +903,7 @@
         <a href="#inicio" aria-label="Volver al inicio">
           <img src="img/logos/transparente/principal_blanco.png" alt="Eben Arquitectura y Construcción S.A.S." width="1080" height="1080" loading="lazy" decoding="async">
         </a>
-        <p>Diseñamos y construimos espacios para vivir, trabajar y crecer.</p>
+        <p>Creamos espacios que permanecen.</p>
       </div>
       <nav class="site-footer__nav" aria-label="Navegación del pie de página">
         <h2>Explora</h2>

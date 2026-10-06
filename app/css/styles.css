@@ -558,6 +558,12 @@ button {
   font-size: 0.94rem;
   line-height: 1.38;
   color: rgba(70, 15, 36, 0.86);
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.service__list li:hover {
+  background: rgba(70, 15, 36, 0.045);
+  color: var(--color-burdeos);
 }
 
 .service__bullet {
@@ -987,6 +993,12 @@ button {
   line-height: 1.4;
   color: var(--color-burdeos);
   cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.faq__q:hover {
+  background: rgba(70, 15, 36, 0.05);
+  color: #2E0716;
 }
 
 .faq__q:focus-visible {
