@@ -452,6 +452,7 @@ button {
   grid-column: 1;
   grid-row: 4;
   min-height: 0;
+  align-self: start;
   overflow: hidden;
   background: var(--color-hielo);
 }
@@ -461,7 +462,7 @@ button {
   inset: auto;
   z-index: 3;
   height: clamp(300px, 40vh, 440px);
-  background: url("../assets/diseño.png") center / cover;
+  background: url("../img/logos/transparente/simbolo_negro.png") center / cover;
 }
 
 .service__carousel .photos__img {
@@ -1341,7 +1342,7 @@ button {
   margin: 0;
   border: 1px solid rgba(207, 228, 233, 0.45);
   color: var(--color-blanco) !important;
-  transition: border-color 200ms ease, color 200ms ease, transform 200ms ease;
+  transition: border-color 200ms ease, background-color 200ms ease, color 200ms ease, transform 200ms ease;
 }
 
 .site-footer__social:hover,
@@ -1349,6 +1350,20 @@ button {
   border-color: var(--color-hielo);
   color: var(--color-hielo) !important;
   transform: translateY(-2px);
+}
+
+.site-footer__social[aria-label^="Instagram"]:hover,
+.site-footer__social[aria-label^="Instagram"]:focus-visible {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  border-color: transparent;
+  color: var(--color-blanco) !important;
+}
+
+.site-footer__social[aria-label^="Facebook"]:hover,
+.site-footer__social[aria-label^="Facebook"]:focus-visible {
+  background: #1877f2;
+  border-color: #1877f2;
+  color: var(--color-blanco) !important;
 }
 
 .site-footer__social svg {
@@ -1440,6 +1455,101 @@ button {
   }
 }
 
+/* ---------- Lightbox ---------- */
+
+body.has-lightbox {
+  overflow: hidden;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(20px, 5vw, 72px);
+  background: rgba(0, 0, 0, 0.92);
+  cursor: zoom-out;
+  animation: lightbox-fade 200ms ease;
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox__img {
+  max-width: 100%;
+  max-height: 82vh;
+  object-fit: contain;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+}
+
+.lightbox__close {
+  position: absolute;
+  top: clamp(12px, 3vw, 24px);
+  right: clamp(12px, 3vw, 24px);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  color: var(--color-blanco);
+  background: rgba(255, 255, 255, 0.08);
+  transition: background 200ms ease;
+}
+
+.lightbox__close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  color: var(--color-blanco);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-50%);
+  transition: background 200ms ease;
+}
+
+.lightbox__nav:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.lightbox__nav--prev {
+  left: clamp(8px, 2vw, 24px);
+}
+
+.lightbox__nav--next {
+  right: clamp(8px, 2vw, 24px);
+}
+
+.lightbox__counter {
+  position: absolute;
+  bottom: clamp(16px, 4vh, 32px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+@keyframes lightbox-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.works__side .photos {
+  cursor: zoom-in;
+}
+
 /* ---------- Movimiento reducido ---------- */
 
 @media (prefers-reduced-motion: reduce) {
@@ -1475,5 +1585,9 @@ button {
 
   .cta__whatsapp {
     transition: none;
+  }
+
+  .lightbox {
+    animation: none;
   }
 }

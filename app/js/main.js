@@ -226,6 +226,8 @@ class PhotoCarousel {
     });
 
     this.go(0);
+
+    if (root.closest(".works__side")) this.initLightbox();
   }
 
   createRenderSlides() {
@@ -267,6 +269,75 @@ class PhotoCarousel {
     this.load(this.index);
     this.load((this.index + 1) % this.total);
     this.counter.textContent =
+      String(this.index + 1).padStart(2, "0") + " / " + String(this.total).padStart(2, "0");
+    if (this.lightbox && !this.lightbox.hidden) this.syncLightbox();
+  }
+
+  initLightbox() {
+    this.lightbox = document.createElement("div");
+    this.lightbox.className = "lightbox";
+    this.lightbox.setAttribute("role", "dialog");
+    this.lightbox.setAttribute("aria-modal", "true");
+    this.lightbox.setAttribute("aria-label", "Imagen ampliada");
+    this.lightbox.hidden = true;
+
+    this.lightbox.innerHTML =
+      '<button class="lightbox__close" type="button" aria-label="Cerrar imagen ampliada">' +
+        '<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
+      "</button>" +
+      '<button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Imagen anterior">' +
+        '<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>' +
+      "</button>" +
+      '<img class="lightbox__img" alt="">' +
+      '<button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Imagen siguiente">' +
+        '<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>' +
+      "</button>" +
+      '<span class="lightbox__counter" aria-live="polite"></span>';
+
+    this.lightboxImg = this.lightbox.querySelector(".lightbox__img");
+    this.lightboxCounter = this.lightbox.querySelector(".lightbox__counter");
+
+    this.lightbox.querySelector(".lightbox__close").addEventListener("click", () => this.closeLightbox());
+    this.lightbox.querySelector(".lightbox__nav--prev").addEventListener("click", () => this.go(this.index - 1));
+    this.lightbox.querySelector(".lightbox__nav--next").addEventListener("click", () => this.go(this.index + 1));
+    this.lightbox.addEventListener("click", (event) => {
+      if (event.target === this.lightbox) this.closeLightbox();
+    });
+
+    document.body.appendChild(this.lightbox);
+
+    this.root.addEventListener("click", (event) => {
+      if (event.target.closest(".photos__arrow")) return;
+      this.openLightbox();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (this.lightbox.hidden) return;
+      if (event.key === "Escape") this.closeLightbox();
+      else if (event.key === "ArrowLeft") this.go(this.index - 1);
+      else if (event.key === "ArrowRight") this.go(this.index + 1);
+    });
+  }
+
+  openLightbox() {
+    this.load(this.index);
+    this.lightbox.hidden = false;
+    document.body.classList.add("has-lightbox");
+    this.syncLightbox();
+    this.lightbox.querySelector(".lightbox__close").focus();
+  }
+
+  closeLightbox() {
+    this.lightbox.hidden = true;
+    document.body.classList.remove("has-lightbox");
+  }
+
+  syncLightbox() {
+    const img = this.slides[this.index];
+    if (!img) return;
+    this.lightboxImg.src = img.src || img.dataset.src;
+    this.lightboxImg.alt = img.alt || "";
+    this.lightboxCounter.textContent =
       String(this.index + 1).padStart(2, "0") + " / " + String(this.total).padStart(2, "0");
   }
 }
