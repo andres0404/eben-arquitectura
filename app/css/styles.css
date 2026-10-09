@@ -583,43 +583,33 @@ button {
 .about {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
   background: var(--color-blanco);
   color: var(--color-burdeos);
-  padding-bottom: clamp(64px, 10vh, 112px);
 }
 
 .about::before {
   content: "";
   position: absolute;
-  inset: 0;
-  z-index: -2;
-  background: url("../img/renders/optimized/Residencial/7.jpg") center / cover no-repeat;
+  inset: 0 auto 0 0;
+  z-index: -1;
+  width: min(54%, 520px);
+  background: url("../img/logos/transparente/simbolo_color.png") no-repeat center / contain;
+  opacity: 0.07;
+  pointer-events: none;
 }
 
-.about::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(
-    180deg,
-    var(--color-blanco) 0%,
-    rgba(255, 255, 255, 0.85) 35%,
-    rgba(255, 255, 255, 0.85) 65%,
-    var(--color-blanco) 100%
-  );
+.about__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: clamp(64px, 10vh, 120px) clamp(24px, 7vw, 96px);
 }
 
 .about__intro {
-  max-width: 760px;
-  margin-inline: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: clamp(48px, 8vh, 88px) clamp(24px, 5vw, 32px) clamp(24px, 4vh, 40px);
+  text-align: left;
 }
 
 .about__title {
@@ -634,7 +624,7 @@ button {
 
 .about__text {
   margin-top: clamp(16px, 3vh, 28px);
-  max-width: 74ch;
+  max-width: 48ch;
   font-size: clamp(1rem, 1.6vw, 1.2rem);
   font-weight: 400;
   line-height: 1.7;
@@ -642,51 +632,60 @@ button {
   color: rgba(70, 15, 36, 0.82);
 }
 
-.about__process {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 0 clamp(24px, 5vw, 32px);
-}
-
 .about__process-title {
-  margin-bottom: clamp(8px, 2vh, 16px);
+  margin-bottom: clamp(20px, 3vh, 32px);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(70, 15, 36, 0.58);
+  color: rgba(70, 15, 36, 0.72);
+}
+
+.about__process-title::before {
+  content: "";
+  display: block;
+  width: clamp(32px, 4vw, 52px);
+  height: 5px;
+  margin-bottom: 12px;
+  background: var(--color-hielo);
 }
 
 .about__steps {
   list-style: none;
+  border-left: 1px solid rgba(70, 15, 36, 0.18);
+  padding-left: clamp(20px, 3vw, 28px);
 }
 
 .about__steps li {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 14px 0;
-  border-top: 1px solid rgba(70, 15, 36, 0.12);
-  font-size: clamp(0.98rem, 1.4vw, 1.08rem);
-  line-height: 1.6;
-  color: rgba(70, 15, 36, 0.86);
+  position: relative;
+  padding-bottom: clamp(20px, 3.5vh, 28px);
 }
 
 .about__steps li:last-child {
-  border-bottom: 1px solid rgba(70, 15, 36, 0.12);
+  padding-bottom: 0;
 }
 
-.about__steps strong {
-  margin-right: 4px;
+.about__steps li::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * clamp(20px, 3vw, 28px) - 3px);
+  top: 5px;
+  width: 6px;
+  height: 6px;
+  background: var(--color-burdeos);
+}
+
+.about__step-body strong {
+  display: block;
+  font-size: 1.02rem;
   color: var(--color-burdeos);
 }
 
-.about__check {
-  flex: none;
-  width: 22px;
-  height: 22px;
-  margin-top: 2px;
-  color: var(--color-burdeos);
+.about__step-body p {
+  margin-top: 4px;
+  font-size: 0.96rem;
+  line-height: 1.6;
+  color: rgba(70, 15, 36, 0.8);
 }
 
 /* ---------- Trabajos ---------- */
@@ -894,6 +893,17 @@ button {
 
 /* ---------- Responsive ---------- */
 
+@media (max-width: 1115px) {
+  .site-nav {
+    gap: clamp(14px, 2vw, 24px);
+  }
+
+  .site-nav a {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+  }
+}
+
 @media (max-width: 640px) {
   .site-header {
     padding: 16px 20px;
@@ -1013,6 +1023,11 @@ button {
   .works__grid {
     grid-template-columns: 1fr;
     gap: clamp(24px, 4vw, 40px);
+  }
+
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: clamp(32px, 5vw, 48px);
   }
 
   .compare {
