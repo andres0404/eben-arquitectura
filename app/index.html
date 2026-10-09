@@ -49,7 +49,8 @@
 
     .proposal-editorial .services__intro,
     .proposal-editorial .works__intro,
-    .proposal-editorial .faq__intro {
+    .proposal-editorial .faq__intro,
+    .proposal-editorial .about__intro {
       align-items: flex-start;
       max-width: 1280px;
       padding-right: clamp(24px, 7vw, 96px);
@@ -239,7 +240,8 @@
       .proposal-editorial .hero__content,
       .proposal-editorial .services__intro,
       .proposal-editorial .works__intro,
-      .proposal-editorial .faq__intro {
+      .proposal-editorial .faq__intro,
+      .proposal-editorial .about__intro {
         align-items: flex-start;
         padding-right: 24px;
         padding-left: 24px;
@@ -549,6 +551,7 @@
     <nav class="site-nav" id="site-nav-menu" aria-label="Navegación principal">
       <a href="#inicio">Inicio</a>
       <a href="#servicios">Servicios</a>
+      <a href="#quienes-somos">Quiénes somos</a>
       <a href="#trabajos">Trabajos</a>
       <a href="#preguntas">Preguntas frecuentes</a>
       <a href="#contacto">Contacto</a>
@@ -713,6 +716,39 @@
           </div>
         </div>
       </article>
+    </section>
+
+    <section class="about" id="quienes-somos" aria-labelledby="about-title">
+      <div class="about__intro">
+        <h2 class="about__title" id="about-title">Quiénes somos</h2>
+        <p class="about__text">Eben Arquitectura y Construcción S.A.S. es una empresa colombiana dedicada al diseño, la construcción, la remodelación, la adecuación y el mantenimiento de espacios residenciales, empresariales y comerciales. Acompañamos cada proyecto de principio a fin, desde la idea y el diseño hasta la ejecución y la entrega final, centralizando todo en un mismo equipo.</p>
+      </div>
+
+      <div class="about__process">
+        <h3 class="about__process-title">Nuestro proceso</h3>
+        <ul class="about__steps">
+          <li>
+            <svg class="about__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12l5 5 11-11"/></svg>
+            <span><strong>Visita técnica</strong> Conocemos el espacio, tus necesidades, ideas y presupuesto.</span>
+          </li>
+          <li>
+            <svg class="about__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12l5 5 11-11"/></svg>
+            <span><strong>Diseño y propuesta</strong> Desarrollamos la solución y definimos el alcance del proyecto.</span>
+          </li>
+          <li>
+            <svg class="about__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12l5 5 11-11"/></svg>
+            <span><strong>Contrato y planificación</strong> Establecemos costos, tiempos, responsabilidades y condiciones antes de iniciar.</span>
+          </li>
+          <li>
+            <svg class="about__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12l5 5 11-11"/></svg>
+            <span><strong>Ejecución</strong> Ponemos en marcha el proyecto y coordinamos las diferentes etapas de la obra.</span>
+          </li>
+          <li>
+            <svg class="about__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12l5 5 11-11"/></svg>
+            <span><strong>Entrega final</strong> Revisamos contigo el resultado y dejamos el espacio listo para disfrutarlo.</span>
+          </li>
+        </ul>
+      </div>
     </section>
 
     <section class="works" id="trabajos" aria-labelledby="works-title">
@@ -906,6 +942,7 @@
       <nav class="site-footer__nav" aria-label="Navegación del pie de página">
         <h2>Explora</h2>
         <a href="#servicios">Servicios</a>
+        <a href="#quienes-somos">Quiénes somos</a>
         <a href="#trabajos">Trabajos</a>
         <a href="#preguntas">Preguntas frecuentes</a>
         <a href="#contacto">Contacto</a>

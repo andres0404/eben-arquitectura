@@ -578,6 +578,117 @@ button {
   min-width: 0;
 }
 
+/* ---------- Quiénes somos ---------- */
+
+.about {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--color-blanco);
+  color: var(--color-burdeos);
+  padding-bottom: clamp(64px, 10vh, 112px);
+}
+
+.about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: url("../img/renders/optimized/Residencial/7.jpg") center / cover no-repeat;
+}
+
+.about::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    var(--color-blanco) 0%,
+    rgba(255, 255, 255, 0.85) 35%,
+    rgba(255, 255, 255, 0.85) 65%,
+    var(--color-blanco) 100%
+  );
+}
+
+.about__intro {
+  max-width: 760px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(48px, 8vh, 88px) clamp(24px, 5vw, 32px) clamp(24px, 4vh, 40px);
+}
+
+.about__title {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: 0.18em;
+  text-indent: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-burdeos);
+}
+
+.about__text {
+  margin-top: clamp(16px, 3vh, 28px);
+  max-width: 74ch;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  color: rgba(70, 15, 36, 0.82);
+}
+
+.about__process {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 32px);
+}
+
+.about__process-title {
+  margin-bottom: clamp(8px, 2vh, 16px);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(70, 15, 36, 0.58);
+}
+
+.about__steps {
+  list-style: none;
+}
+
+.about__steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(70, 15, 36, 0.12);
+  font-size: clamp(0.98rem, 1.4vw, 1.08rem);
+  line-height: 1.6;
+  color: rgba(70, 15, 36, 0.86);
+}
+
+.about__steps li:last-child {
+  border-bottom: 1px solid rgba(70, 15, 36, 0.12);
+}
+
+.about__steps strong {
+  margin-right: 4px;
+  color: var(--color-burdeos);
+}
+
+.about__check {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin-top: 2px;
+  color: var(--color-burdeos);
+}
+
 /* ---------- Trabajos ---------- */
 
 .works {
